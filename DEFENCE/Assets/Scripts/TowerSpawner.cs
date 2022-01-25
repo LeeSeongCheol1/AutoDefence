@@ -40,6 +40,7 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
 
+        // 타워 이미 클릭했다고 판정, 두번 클릭시 중복x를 위해 클릭했다고 판정
         isOnTowerButton = true;
 
         // 마우스
@@ -48,9 +49,44 @@ public class TowerSpawner : MonoBehaviour
         StartCoroutine("OnTowerCancelSystem");
     }
 
+    public void spawnExtraTower(Transform tileTransform){
+        if(isOnTowerButton == false){
+            return;
+        }
+
+        Tile tile = tileTransform.GetComponent<Tile>();
+
+        // 현재 타일 위치에 타워가 건설되어있으면 건설 x
+        if(tile.IsBuildTower == true)
+        {
+            systemTextViewer.PrintText(SystemType.Build);
+            return;
+        }
+
+        isOnTowerButton = false;
+        // 타워가 지워져있음으로 설정
+        tile.IsBuildTower = true;
+        // 타워 건설에 필요한 골드만큼 감소
+        // playerGold.CurrentGold -= towerBuildGold;
+        playerGold.CurrentGold -= towerTemplate[towerType].weapon[0].cost;
+        // 선택한 타일 위치에 타워 건설
+        Vector3 position = tileTransform.position + Vector3.back;
+        // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+        GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
+        clone.GetComponent<TowerWeapon>().disable = true;
+        clone.GetComponent<TowerWeapon>().Setup(this, enemySpawner,playerGold, tile);
+        // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
+        // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
+        OnBuffAllBuffTowers();
+        // 배치 다 하고나면 임시 타워 삭제
+        Destroy(followTowerClone);
+
+        StopCoroutine("OnTowerCancelSystem");
+    }
+
     public void SpawnTower(Transform tileTransform)
     {
-
+        // 타워를 클릭한 상태가 아니라면 타워 건설x
         if(isOnTowerButton == false)
         {
             return;

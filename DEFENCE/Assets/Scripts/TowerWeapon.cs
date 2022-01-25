@@ -7,6 +7,9 @@ public enum WeaponState { SearchTarget = 0, TryAttackCannon, TryAttackLaser,}
 
 public class TowerWeapon : MonoBehaviour
 {
+    [SerializeField]
+    public bool disable;
+
     // Inspector View의 표시되는 변수들을 용도별로 구분하기 위한 어트리뷰트
     [Header("Commons")]
     [SerializeField]
@@ -89,6 +92,9 @@ public class TowerWeapon : MonoBehaviour
 
         if (weaponType == WeaponType.Cannon || weaponType == WeaponType.Laser)
         {
+            if(disable == true){
+                return;
+            }
             ChangeState(WeaponState.SearchTarget);
         }
     }
@@ -102,6 +108,9 @@ public class TowerWeapon : MonoBehaviour
 
     private void Update()
     {
+        if(disable == true){
+                return;
+        }
         if(attackTarget != null)
         {
             RotateToTarget();

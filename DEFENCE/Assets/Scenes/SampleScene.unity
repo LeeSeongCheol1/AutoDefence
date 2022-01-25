@@ -4501,6 +4501,11 @@ PrefabInstance:
       propertyPath: m_FlipY
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1679678247640504730, guid: 20e0386bf2d4a9c47ad686c2603dab35,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 2525444722269525285, guid: 20e0386bf2d4a9c47ad686c2603dab35,
         type: 3}
       propertyPath: m_RootOrder
@@ -4574,6 +4579,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: ExtraTile
+      objectReference: {fileID: 0}
+    - target: {fileID: 1679678247640504730, guid: 20e0386bf2d4a9c47ad686c2603dab35,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 2525444722269525285, guid: 20e0386bf2d4a9c47ad686c2603dab35,
         type: 3}
@@ -7366,7 +7376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b333e1575738b494c982754467582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LimitTime: 30
+  LimitTime: 1
   text_Timer: {fileID: 1458868222}
 --- !u!61 &1604392729
 BoxCollider2D:

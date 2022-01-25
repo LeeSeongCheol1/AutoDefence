@@ -50,6 +50,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -97,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5540b5399502944d92f9bf76011191e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 5
   moveDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &6664824750749681435
 MonoBehaviour:
@@ -111,7 +112,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c602ff9eda433974085b34e3a08c5d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gold: 10
 --- !u!58 &-7417936504634937059
 CircleCollider2D:
   m_ObjectHideFlags: 0

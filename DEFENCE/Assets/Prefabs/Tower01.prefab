@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 3681814122366607972}
   - component: {fileID: -4809425033179956711}
   - component: {fileID: 987708727665491019}
+  - component: {fileID: 6303913554145390267}
   m_Layer: 0
   m_Name: Tower01
   m_TagString: Tower
@@ -79,6 +80,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -127,9 +129,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerTemplate: {fileID: 11400000, guid: 08fc1511e3561f54aaff04ec160969d0, type: 2}
+  spawnPoint: {fileID: 4802707541530344472}
+  weaponType: 0
   projectilePrefab: {fileID: 6583615643002864854, guid: f6c456a5f3e5bbe42bdc28645c0af3ca,
     type: 3}
-  spawnPoint: {fileID: 4802707541530344472}
+  lineRenderer: {fileID: 0}
+  hitEffect: {fileID: 0}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!65 &987708727665491019
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -143,3 +151,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 0.59, z: 0.2}
   m_Center: {x: 0.14959997, y: 0, z: 0}
+--- !u!114 &6303913554145390267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973816913900138584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 710947045aa5a3645bf079aaf1bdb726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

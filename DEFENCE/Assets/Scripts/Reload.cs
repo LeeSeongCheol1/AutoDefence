@@ -32,6 +32,7 @@ public class Reload : MonoBehaviour
     private void Awake()
     {
         reloadUpdate();
+        Reloading();
     }
 
     public void reloadUpdate()
