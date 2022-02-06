@@ -12,7 +12,6 @@ public class TowerTemplate : ScriptableObject
     [System.Serializable]
     public struct Weapon
     {
-        public string towerIdentity;
         public Sprite sprite;
         public float critical;
         public float minDamage;

@@ -8,7 +8,6 @@ TagManager:
   - Enemy
   - Tower
   - ExtraTile
-  - chkedTower
   layers:
   - Default
   - TransparentFX

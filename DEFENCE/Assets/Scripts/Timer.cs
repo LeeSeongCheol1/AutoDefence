@@ -8,6 +8,7 @@ public class Timer : MonoBehaviour
 {
 
     GameObject waveStart;
+    GameObject bossStart;
     GameObject EXP;
     public float LimitTime = 60;
 
@@ -17,6 +18,7 @@ public class Timer : MonoBehaviour
     private void Awake()
     {
         waveStart = GameObject.Find("StartWave");
+        bossStart = GameObject.Find("BossWave");
         EXP = GameObject.Find("LEVEL");
     }
         
@@ -25,6 +27,7 @@ public class Timer : MonoBehaviour
         if (LimitTime <= 0)
         {
             waveStart.GetComponent<WaveSystem>().StartWave();
+            bossStart.GetComponent<BossWave>().StartWave();
             LimitTime = 60;
             EXP.GetComponent<PlayerLV>().levelUp(2);
         }

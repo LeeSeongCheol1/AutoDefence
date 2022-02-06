@@ -49,8 +49,6 @@ public class TowerWeapon : MonoBehaviour
 
     private float addedDamage;
     private int buffLevel;  // 버프를 받는지 여부 설정
-    int[] y = new int[2] {1,2};    // 겹치는 타워 배열 번호 저장하는 배열(업그레이드 시 3개있는지 확인)
-    int z = 0;  // 겹치는 타워 갯수를 저장
 
     public Sprite TowerSprite => towerTemplate.weapon[level].sprite;
     public float minDamage => towerTemplate.weapon[level].minDamage;
@@ -64,9 +62,6 @@ public class TowerWeapon : MonoBehaviour
     public float Buff => towerTemplate.weapon[level].buff;
     public WeaponType WeaponType => weaponType;
     public float Critical => towerTemplate.weapon[level].critical;
-    
-    private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
-    public GameObject[] towerarr;
 
 
     /*
@@ -360,20 +355,13 @@ public class TowerWeapon : MonoBehaviour
 
     public bool Upgrade()
     {
-        gameObject.tag = "chkedTower";
-        bool chk = upgradeChk();
-        gameObject.tag = "Tower";
-
-        if(chk == false){
+        // 타워 업그레이드에 필요한 골드가 충분한지 검사
+        if(playerGold.CurrentGold < towerTemplate.weapon[level + 1].cost)
+        {
             return false;
         }
 
-
-        towerarr[y[0]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
-        towerarr[y[1]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
-        Destroy(towerarr[y[0]]);
-        Destroy(towerarr[y[1]]);
-
+        // 타워 레벨 증가
         level++;
         // 타워 외형 변경(Sprite)
         spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
@@ -393,24 +381,6 @@ public class TowerWeapon : MonoBehaviour
         towerSpawner.OnBuffAllBuffTowers();
 
         return true; 
-    }
-
-    public bool upgradeChk(){
-        z = 0; 
-
-        towerarr = GameObject.FindGameObjectsWithTag("Tower");
-        for(int i = 0; i<towerarr.Length;i++){
-            TowerWeapon towerWeapon = towerarr[i].GetComponent<TowerWeapon>();
-            if(towerWeapon.towerIdentity == towerIdentity){
-                y[z] = i;
-                z++;
-                if(z == 2){
-                    return true;
-                }
-            }
-        }
-
-        return false;
     }
 
     public void Sell()

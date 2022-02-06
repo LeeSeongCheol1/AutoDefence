@@ -73,7 +73,6 @@ public class TowerSpawner : MonoBehaviour
         Vector3 position = tileTransform.position + Vector3.back;
         // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
         GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
-        // 여분의 자리에만 두는것이기떄문에 공격은 x인상태로 설정
         clone.GetComponent<TowerWeapon>().disable = true;
         clone.GetComponent<TowerWeapon>().Setup(this, enemySpawner,playerGold, tile);
         // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
@@ -153,7 +152,6 @@ public class TowerSpawner : MonoBehaviour
     public void OnBuffAllBuffTowers()
     {
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");
-        Debug.Log(towers);
 
         for(int i = 0; i<towers.Length; ++i)
         {
