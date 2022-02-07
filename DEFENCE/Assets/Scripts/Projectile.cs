@@ -30,10 +30,18 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Enemy")) return;
+        if (!(collision.CompareTag("Enemy") || collision.CompareTag("Boss"))){
+            return;
+        }
         if (collision.transform != target) return;
-
-        collision.GetComponent<EnemyHP>().TakeDamage(damage);
-        Destroy(gameObject);
+        
+        if(collision.CompareTag("Enemy")){
+            collision.GetComponent<EnemyHP>().TakeDamage(damage);
+            Destroy(gameObject);
+        }else if(collision.CompareTag("Boss")){
+            collision.GetComponent<BossHP>().TakeDamage(damage);
+            Destroy(gameObject);
+        }
+              
     }
 }

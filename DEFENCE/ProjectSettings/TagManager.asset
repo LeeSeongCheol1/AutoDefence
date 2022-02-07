@@ -8,6 +8,9 @@ TagManager:
   - Enemy
   - Tower
   - ExtraTile
+  - BossTile
+  - chkedTower
+  - Boss
   layers:
   - Default
   - TransparentFX

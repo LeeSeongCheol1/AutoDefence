@@ -17,20 +17,35 @@ MonoBehaviour:
   followTowerPrefab: {fileID: 6686703772809165608, guid: 5012bef228842c84fbb2c4eb38468001,
     type: 3}
   weapon:
-  - sprite: {fileID: 21300000, guid: f777a251056772b4980e9aa5dd19da30, type: 3}
-    damage: 1.5
+  - towerIdentity: Tower02_lv1
+    sprite: {fileID: 21300000, guid: f777a251056772b4980e9aa5dd19da30, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
     rate: 0
     range: 3
     cost: 200
     sell: 100
-  - sprite: {fileID: 21300000, guid: eec7081b88b316e49ac5843d0ca1ac6e, type: 3}
-    damage: 3
+  - towerIdentity: Tower02_lv2
+    sprite: {fileID: 21300000, guid: eec7081b88b316e49ac5843d0ca1ac6e, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
     rate: 0
     range: 3
     cost: 350
     sell: 150
-  - sprite: {fileID: 21300000, guid: b3b88829994060f468c66de052d30c63, type: 3}
-    damage: 5
+  - towerIdentity: Tower02_lv3
+    sprite: {fileID: 21300000, guid: b3b88829994060f468c66de052d30c63, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
     rate: 0
     range: 5
     cost: 400

@@ -118,4 +118,8 @@ public class TowerDataViewer : MonoBehaviour
         // 공격범위 Off
         OffPanel();
     }
+
+    public void OnClickEventMoveBossRoom(){
+        currentTower.MoveBossScene();
+    }
 }

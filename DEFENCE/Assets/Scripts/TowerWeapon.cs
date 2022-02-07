@@ -44,11 +44,14 @@ public class TowerWeapon : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private TowerSpawner towerSpawner;
     private EnemySpawner enemySpawner;
+    private BossSpawner bossSpawner;
     private PlayerGold playerGold;
     private Tile ownerTile;
 
     private float addedDamage;
     private int buffLevel;  // 버프를 받는지 여부 설정
+    int[] y = new int[2] {1,2};    // 겹치는 타워 배열 번호 저장하는 배열(업그레이드 시 3개있는지 확인)
+    int z = 0;  // 겹치는 타워 갯수를 저장
 
     public Sprite TowerSprite => towerTemplate.weapon[level].sprite;
     public float minDamage => towerTemplate.weapon[level].minDamage;
@@ -62,6 +65,9 @@ public class TowerWeapon : MonoBehaviour
     public float Buff => towerTemplate.weapon[level].buff;
     public WeaponType WeaponType => weaponType;
     public float Critical => towerTemplate.weapon[level].critical;
+    
+    private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
+    public GameObject[] towerarr;
 
 
     /*
@@ -82,10 +88,11 @@ public class TowerWeapon : MonoBehaviour
         get => buffLevel;
     }
 
-    public void Setup(TowerSpawner towerSpawner,EnemySpawner enemySpawner,PlayerGold playerGold,Tile ownerTile)
+    public void Setup(TowerSpawner towerSpawner,BossSpawner bossSpawner,EnemySpawner enemySpawner,PlayerGold playerGold,Tile ownerTile)
     {
         spriteRenderer = GetComponent<SpriteRenderer>();    // 타워 외형 가져오기
         this.towerSpawner = towerSpawner;
+        this.bossSpawner = bossSpawner;
         this.enemySpawner = enemySpawner;
         this.playerGold = playerGold;
         this.ownerTile = ownerTile;
@@ -265,6 +272,17 @@ public class TowerWeapon : MonoBehaviour
                 attackTarget = enemySpawner.EnemyList[i].transform;
             }
         }
+
+        for(int i = 0; i<bossSpawner.EnemyList.Count; ++i)
+        {
+            float distance = Vector3.Distance(bossSpawner.EnemyList[i].transform.position, transform.position);
+            // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
+            if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+            {
+                closestDistSqr = distance;
+                attackTarget = bossSpawner.EnemyList[i].transform;
+            }
+        }
         return attackTarget;
     }
 
@@ -355,13 +373,20 @@ public class TowerWeapon : MonoBehaviour
 
     public bool Upgrade()
     {
-        // 타워 업그레이드에 필요한 골드가 충분한지 검사
-        if(playerGold.CurrentGold < towerTemplate.weapon[level + 1].cost)
-        {
+        gameObject.tag = "chkedTower";
+        bool chk = upgradeChk();
+        gameObject.tag = "Tower";
+
+        if(chk == false){
             return false;
         }
 
-        // 타워 레벨 증가
+
+        towerarr[y[0]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
+        towerarr[y[1]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
+        Destroy(towerarr[y[0]]);
+        Destroy(towerarr[y[1]]);
+
         level++;
         // 타워 외형 변경(Sprite)
         spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
@@ -383,6 +408,24 @@ public class TowerWeapon : MonoBehaviour
         return true; 
     }
 
+    public bool upgradeChk(){
+        z = 0; 
+
+        towerarr = GameObject.FindGameObjectsWithTag("Tower");
+        for(int i = 0; i<towerarr.Length;i++){
+            TowerWeapon towerWeapon = towerarr[i].GetComponent<TowerWeapon>();
+            if(towerWeapon.towerIdentity == towerIdentity){
+                y[z] = i;
+                z++;
+                if(z == 2){
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     public void Sell()
     {
         // 골드 증가
@@ -391,5 +434,10 @@ public class TowerWeapon : MonoBehaviour
         ownerTile.IsBuildTower = false;
         // 타워 파괴
         Destroy(gameObject);
+    }
+
+    public void MoveBossScene(){
+        GameObject bossTile = GameObject.FindGameObjectWithTag("BossTile");
+        this.gameObject.transform.position = bossTile.transform.position;
     }
 }
