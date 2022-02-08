@@ -9,6 +9,8 @@ public class TowerWeapon : MonoBehaviour
 {
     [SerializeField]
     public bool disable;
+    [SerializeField]
+    public bool bossmode;
 
     // Inspector View의 표시되는 변수들을 용도별로 구분하기 위한 어트리뷰트
     [Header("Commons")]
@@ -261,28 +263,32 @@ public class TowerWeapon : MonoBehaviour
         // 제일 가까이 있는 적을 찾기위해 최초 거리를 최대한 크게 설정
         float closestDistSqr = Mathf.Infinity;
 
-        // EnemySpawner의 EnemyList에있는 모든 적 검사
-        for(int i = 0; i<enemySpawner.EnemyList.Count; ++i)
+        if(bossmode == false)
         {
-            float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
-            // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
-            if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+            // EnemySpawner의 EnemyList에있는 모든 적 검사
+            for(int i = 0; i<enemySpawner.EnemyList.Count; ++i)
             {
+                float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
+                // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
+                if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+                {
                 closestDistSqr = distance;
                 attackTarget = enemySpawner.EnemyList[i].transform;
+                }
+            }
+        }else{
+            for(int i = 0; i<bossSpawner.EnemyList.Count; ++i)
+            {
+                float distance = Vector3.Distance(bossSpawner.EnemyList[i].transform.position, transform.position);
+                // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
+                if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+                {
+                    closestDistSqr = distance;
+                    attackTarget = bossSpawner.EnemyList[i].transform;
+                }
             }
         }
 
-        for(int i = 0; i<bossSpawner.EnemyList.Count; ++i)
-        {
-            float distance = Vector3.Distance(bossSpawner.EnemyList[i].transform.position, transform.position);
-            // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
-            if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
-            {
-                closestDistSqr = distance;
-                attackTarget = bossSpawner.EnemyList[i].transform;
-            }
-        }
         return attackTarget;
     }
 
@@ -366,7 +372,11 @@ public class TowerWeapon : MonoBehaviour
 
                 // 공격력 = 타워 기본 공격력 + 버프에 의해 추가된 공격력
                 float damage = towerTemplate.weapon[level].minDamage + AddedDamage;
-                attackTarget.GetComponent<EnemyHP>().TakeDamage(damage * Time.deltaTime);
+                if(bossmode == true){
+                    attackTarget.GetComponent<BossHP>().TakeDamage(damage * Time.deltaTime);
+                }else{
+                    attackTarget.GetComponent<EnemyHP>().TakeDamage(damage * Time.deltaTime);
+                }
             }
         }
     }
@@ -438,6 +448,7 @@ public class TowerWeapon : MonoBehaviour
 
     public void MoveBossScene(){
         GameObject bossTile = GameObject.FindGameObjectWithTag("BossTile");
+        bossmode = true;
         this.gameObject.transform.position = bossTile.transform.position;
     }
 }

@@ -36,14 +36,14 @@ public class ObjectDetector : MonoBehaviour
             if(Physics.Raycast(ray, out hit, Mathf.Infinity))
             {
                 hitTransform = hit.transform;
-                if (hit.transform.CompareTag("Tile"))
-                {
-                    towerSpawner.SpawnTower(hit.transform);
-                }else if (hit.transform.CompareTag("Tower"))
+                if (hit.transform.CompareTag("Tower"))
                 {
                     towerDataViewer.OnPanel(hit.transform);
                 }else if(hit.transform.CompareTag("ExtraTile")){
                     towerSpawner.spawnExtraTower(hit.transform);
+                }else if (hit.transform.CompareTag("Tile"))
+                {
+                    towerSpawner.SpawnTower(hit.transform);
                 }
             }
         }else if (Input.GetMouseButtonUp(0))

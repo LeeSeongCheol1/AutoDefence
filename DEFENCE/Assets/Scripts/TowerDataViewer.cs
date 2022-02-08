@@ -121,5 +121,6 @@ public class TowerDataViewer : MonoBehaviour
 
     public void OnClickEventMoveBossRoom(){
         currentTower.MoveBossScene();
+        OffPanel();
     }
 }
