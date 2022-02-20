@@ -22,6 +22,8 @@ public class TowerSpawner : MonoBehaviour
     private PlayerGold playerGold;
     [SerializeField]
     private SystemTextViewer systemTextViewer;
+    [SerializeField]
+    private Synergy synergy;
     private bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;
@@ -124,6 +126,7 @@ public class TowerSpawner : MonoBehaviour
         Vector3 position = tileTransform.position + Vector3.back;
         // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
         GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
+        synergy.chkSynergy(towerTemplate[towerType].weapon[0].towerSynergy);
         // 타워 무기에 enemySpanwer 정보 전달
         clone.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
 

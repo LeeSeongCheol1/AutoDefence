@@ -13,6 +13,7 @@ public class TowerTemplate : ScriptableObject
     public struct Weapon
     {
         public string towerIdentity;
+        public string towerSynergy;
         public Sprite sprite;
         public float critical;
         public float minDamage;

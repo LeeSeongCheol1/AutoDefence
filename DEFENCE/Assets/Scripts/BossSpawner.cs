@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -23,6 +23,7 @@ public class BossSpawner : MonoBehaviour
     public List<Boss> EnemyList => enemyList;
     public int CurrentEnemyCount => currentEnemyCount;
     public int MaxEnemyCount => currentWave.maxEnemyCount;
+    public bool bossAtk = false;
 
     private void Awake()
     {

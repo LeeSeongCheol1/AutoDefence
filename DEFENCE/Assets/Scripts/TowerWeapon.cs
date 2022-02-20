@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -67,10 +67,17 @@ public class TowerWeapon : MonoBehaviour
     public float Buff => towerTemplate.weapon[level].buff;
     public WeaponType WeaponType => weaponType;
     public float Critical => towerTemplate.weapon[level].critical;
+
+    public float synergyDamage;
+    public float synergyCritical;
+    public float synergyRate;
+    public float synergyRange;
+    public float synergySlow;
     
     private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
+    private string towersynergy => towerTemplate.weapon[level].towerSynergy; 
     public GameObject[] towerarr;
-
+    private Vector3 vec;
 
     /*
     public float Damage => attackDamage;
@@ -229,7 +236,7 @@ public class TowerWeapon : MonoBehaviour
 
             // attackRate 시간만큼 대기
             // yield return new WaitForSeconds(attackRate);
-            yield return new WaitForSeconds(towerTemplate.weapon[level].rate);
+            yield return new WaitForSeconds((towerTemplate.weapon[level].rate)*(1-synergyRate));
 
             // 발사체 생성
             SpawnProjectile();
@@ -314,7 +321,7 @@ public class TowerWeapon : MonoBehaviour
     {
         GameObject clone = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
         // clone.GetComponent<Projectile>().Setup(attackTarget,towerTemplate.weapon[level].damage);
-        int damage = (int)Random.Range(minDamage,maxDamage+1);
+        int damage = (int)(Random.Range(minDamage,maxDamage+1)+synergyDamage);
 
         if (randomOX(Critical))
         {
@@ -328,10 +335,11 @@ public class TowerWeapon : MonoBehaviour
 
     private bool randomOX(float criticalRate)
     {
-        int percent = Random.Range(1, 1001);
-        int Rate = (int)criticalRate * 10;
+        int percent = Random.Range(1, 101);
+        int Rate = (int)(criticalRate+synergyCritical);
+        Debug.Log("크리티컬 확률 : "+Rate);
         if(percent <= Rate)
-        {
+        {   
             return true;
         }
         else
@@ -371,7 +379,7 @@ public class TowerWeapon : MonoBehaviour
                 // attackTarget.GetComponent<EnemyHP>().TakeDamage(towerTemplate.weapon[level].damage * Time.deltaTime);
 
                 // 공격력 = 타워 기본 공격력 + 버프에 의해 추가된 공격력
-                float damage = towerTemplate.weapon[level].minDamage + AddedDamage;
+                float damage = towerTemplate.weapon[level].minDamage + AddedDamage +synergyDamage;
                 if(bossmode == true){
                     attackTarget.GetComponent<BossHP>().TakeDamage(damage * Time.deltaTime);
                 }else{
@@ -438,6 +446,8 @@ public class TowerWeapon : MonoBehaviour
 
     public void Sell()
     {
+        GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
+        synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
         // 골드 증가
         playerGold.CurrentGold += towerTemplate.weapon[level].sell;
         // 현재 타일에 다시 건설 가능하게 설정
@@ -447,8 +457,17 @@ public class TowerWeapon : MonoBehaviour
     }
 
     public void MoveBossScene(){
-        GameObject bossTile = GameObject.FindGameObjectWithTag("BossTile");
-        bossmode = true;
-        this.gameObject.transform.position = bossTile.transform.position;
+
+        if(bossmode == false){
+            vec = this.gameObject.transform.position;
+            GameObject bossTile = GameObject.FindGameObjectWithTag("BossTile");
+            bossSpawner.bossAtk = true;
+            bossmode = true;
+            this.gameObject.transform.position = bossTile.transform.position;
+        }else if(bossmode == true){
+            bossSpawner.bossAtk = false;
+            bossmode = false;
+            this.gameObject.transform.position = vec;
+        }
     }
 }

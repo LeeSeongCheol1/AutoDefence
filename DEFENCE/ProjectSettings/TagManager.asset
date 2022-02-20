@@ -11,6 +11,7 @@ TagManager:
   - BossTile
   - chkedTower
   - Boss
+  - Synergy
   layers:
   - Default
   - TransparentFX
