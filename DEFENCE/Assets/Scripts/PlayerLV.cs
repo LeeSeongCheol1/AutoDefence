@@ -14,9 +14,12 @@ public class PlayerLV : MonoBehaviour
     private SystemTextViewer systemTextViewer;
     [SerializeField]
     private Button buttonUpgrade;
+    [SerializeField]
+    private TowerSpawner towerSpawner;
 
     GameObject Reload;
     GameObject PlayerGold;
+    bool first = true;
 
     int[] level = new int[] { 0, 2, 6, 10, 20, 36, 56, 86 };
     private int currentLV = 1;
@@ -36,7 +39,7 @@ public class PlayerLV : MonoBehaviour
 
     private void Awake()
     {
-        currentLevel.text = "플레이어 레벨 : " + currentLV;
+        currentLevel.text = "플레이어 레벨 : " + 1;
         currentExperience.text = "Exp : "+currentExp + " / " + level[currentLV];
         PlayerGold = GameObject.Find("PlayerStats");
         Reload = GameObject.Find("RELOAD");
@@ -49,6 +52,7 @@ public class PlayerLV : MonoBehaviour
         {
             currentLevel.text = "플레이어 레벨 : MAX";
             currentExperience.text = "Exp : MAX";
+            towerSpawner.UpdateTowerText();
             return;
         }
 
@@ -56,6 +60,12 @@ public class PlayerLV : MonoBehaviour
 
         if(currentExp >= level[currentLV])
         {
+            if(first == true){
+                first = false;
+                currentExp = 0;
+                return;
+            }
+            towerSpawner.maxnum += 1;
             Reload.GetComponent<Reload>().reloadUpdate();
             int overExp = 0;
             overExp = currentExp - level[currentLV];
@@ -68,11 +78,13 @@ public class PlayerLV : MonoBehaviour
             buttonUpgrade.interactable = false;
             currentLevel.text = "플레이어 레벨 : MAX";
             currentExperience.text = "Exp : MAX";
+            towerSpawner.UpdateTowerText();
             return;
         }
 
         currentLevel.text = "플레이어 레벨 : " + currentLV;
         currentExperience.text = "Exp : " + currentExp + " / " + level[currentLV];
+        towerSpawner.UpdateTowerText();
 
     }
 

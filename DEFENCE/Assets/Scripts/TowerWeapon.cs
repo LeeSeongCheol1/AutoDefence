@@ -74,10 +74,12 @@ public class TowerWeapon : MonoBehaviour
     public float synergyRange;
     public float synergySlow;
     
+    
     private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
     private string towersynergy => towerTemplate.weapon[level].towerSynergy; 
     public GameObject[] towerarr;
     private Vector3 vec;
+    public int towerType;
 
     /*
     public float Damage => attackDamage;
@@ -446,6 +448,8 @@ public class TowerWeapon : MonoBehaviour
 
     public void Sell()
     {
+        towerSpawner.towernum--;
+        towerSpawner.UpdateTowerText();
         GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
         synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
         // 골드 증가

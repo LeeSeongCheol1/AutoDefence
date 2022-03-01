@@ -12,6 +12,7 @@ TagManager:
   - chkedTower
   - Boss
   - Synergy
+  - SpawnText
   layers:
   - Default
   - TransparentFX

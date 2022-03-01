@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TowerSpawner : MonoBehaviour
 {
@@ -24,12 +25,24 @@ public class TowerSpawner : MonoBehaviour
     private SystemTextViewer systemTextViewer;
     [SerializeField]
     private Synergy synergy;
+    [SerializeField]
+    private PlayerLV playerLV;
+    [SerializeField]
+    private TextMeshProUGUI towerText;
     private bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;
+    public int towernum = 0;
+    public int maxnum = 0;
+
+    private void Awake() {
+        maxnum = 2;
+        UpdateTowerText();
+    }
 
     public void ReadyToSpawnTower(int type)
     {
+
         towerType = type;
         // 버튼 중복 방지
         if(isOnTowerButton == true)
@@ -54,6 +67,7 @@ public class TowerSpawner : MonoBehaviour
     }
 
     public void spawnExtraTower(Transform tileTransform){
+        
         if(isOnTowerButton == false){
             return;
         }
@@ -91,6 +105,8 @@ public class TowerSpawner : MonoBehaviour
 
     public void SpawnTower(Transform tileTransform)
     {
+
+
         // 타워를 클릭한 상태가 아니라면 타워 건설x
         if(isOnTowerButton == false)
         {
@@ -107,6 +123,11 @@ public class TowerSpawner : MonoBehaviour
         }
         */
 
+        if(towernum >= maxnum){
+            systemTextViewer.PrintText(SystemType.TowerMax);
+            return;
+        }
+
         Tile tile = tileTransform.GetComponent<Tile>();
 
         // 현재 타일 위치에 타워가 건설되어있으면 건설 x
@@ -116,6 +137,8 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
 
+        towernum++;
+        UpdateTowerText();
         isOnTowerButton = false;
         // 타워가 지워져있음으로 설정
         tile.IsBuildTower = true;
@@ -169,5 +192,9 @@ public class TowerSpawner : MonoBehaviour
                 weapon.OnBuffAroundTower();
             }
         }
+    }
+
+    public void UpdateTowerText(){
+        towerText.text = "배치 가능 수\n"+"      "+towernum+"/"+maxnum;
     }
 }
