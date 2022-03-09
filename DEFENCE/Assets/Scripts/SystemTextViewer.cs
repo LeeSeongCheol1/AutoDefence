@@ -33,4 +33,15 @@ public class SystemTextViewer : MonoBehaviour
 
         tmpAlpha.FadeOut();
     }
+
+    public void MovePrint(bool status){
+        Color color = textSystem.color;
+        color.a = 255;
+        textSystem.color = color;
+        if(status == true){
+            textSystem.text = "타워를 움직일 곳을 선택해주세요";
+        }else{
+            textSystem.text = "";
+        }
+    }
 }

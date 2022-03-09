@@ -48,8 +48,9 @@ public class TowerWeapon : MonoBehaviour
     private EnemySpawner enemySpawner;
     private BossSpawner bossSpawner;
     private PlayerGold playerGold;
-    private Tile ownerTile;
-
+    public Tile ownerTile;
+    private SystemTextViewer systemTextViewer;
+    private ObjectDetector objectDetector;
     private float addedDamage;
     private int buffLevel;  // 버프를 받는지 여부 설정
     int[] y = new int[2] {1,2};    // 겹치는 타워 배열 번호 저장하는 배열(업그레이드 시 3개있는지 확인)
@@ -79,13 +80,19 @@ public class TowerWeapon : MonoBehaviour
     private string towersynergy => towerTemplate.weapon[level].towerSynergy; 
     public GameObject[] towerarr;
     private Vector3 vec;
-    public int towerType;
+    public Vector3 vec1;
+    public Vector3 vec2;
 
     /*
     public float Damage => attackDamage;
     public float Rate => attackRate;
     public float Range => attackRange;
     */
+
+    private void Awake(){
+        objectDetector = GameObject.Find("ObjectDetector").GetComponent<ObjectDetector>();
+        systemTextViewer = GameObject.Find("TextSystem").GetComponent<SystemTextViewer>();
+    }
 
     public int Level => level + 1;
     public float AddedDamage
@@ -110,9 +117,6 @@ public class TowerWeapon : MonoBehaviour
 
         if (weaponType == WeaponType.Cannon || weaponType == WeaponType.Laser)
         {
-            if(disable == true){
-                return;
-            }
             ChangeState(WeaponState.SearchTarget);
         }
     }
@@ -126,9 +130,7 @@ public class TowerWeapon : MonoBehaviour
 
     private void Update()
     {
-        if(disable == true){
-                return;
-        }
+            
         if(attackTarget != null)
         {
             RotateToTarget();
@@ -148,6 +150,10 @@ public class TowerWeapon : MonoBehaviour
     {
         while (true)
         {
+            if(disable == true){
+            break;
+        }
+
             /*
             float closestDistSqr = Mathf.Infinity;
             for(int i = 0; i<enemySpawner.EnemyList.Count; ++i)
@@ -473,5 +479,34 @@ public class TowerWeapon : MonoBehaviour
             bossmode = false;
             this.gameObject.transform.position = vec;
         }
+    }
+
+    public void MoveTower(){
+        gameObject.tag = "moveTower1";
+        objectDetector.moveStatus = true;
+        systemTextViewer.MovePrint(true);
+        StartCoroutine("MoveTowerCancel");
+    }
+
+    private IEnumerator MoveTowerCancel()
+    {
+        while (true)
+        {
+            // esc키나 오른쪽 마우스 클릭 시 건설 취소
+            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
+            {
+                gameObject.tag = "Tower";
+                objectDetector.moveStatus = false;
+                systemTextViewer.MovePrint(false);
+                break;
+            }
+            yield return null;
+        }
+    }
+
+    public void EndMoveStatus(){
+        objectDetector.moveStatus = false;
+        systemTextViewer.MovePrint(false);
+        StopCoroutine("MoveTowerCancel");
     }
 }

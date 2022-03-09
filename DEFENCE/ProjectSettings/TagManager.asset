@@ -13,6 +13,8 @@ TagManager:
   - Boss
   - Synergy
   - SpawnText
+  - moveTower1
+  - moveTower2
   layers:
   - Default
   - TransparentFX

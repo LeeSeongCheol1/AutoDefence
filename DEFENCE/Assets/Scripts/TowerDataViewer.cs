@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -25,13 +25,7 @@ public class TowerDataViewer : MonoBehaviour
     [SerializeField]
     private Button buttonUpgrade;
     [SerializeField]
-    private Button bossButton;
-    [SerializeField]
     private SystemTextViewer systemTextViewer;
-    [SerializeField]
-    private TextMeshProUGUI bossRoomText;
-    [SerializeField]
-    private BossSpawner bossSpawner;
 
     private TowerWeapon currentTower;
 
@@ -69,29 +63,6 @@ public class TowerDataViewer : MonoBehaviour
 
     private void UpdateTowerData()
     {
-
-        if(currentTower.bossmode == true){
-            bossRoomText.text = "원래 자리로 이동";
-        }else{
-            if(currentTower.disable == true){
-                bossRoomText.text = "필드 타워만 보스 가능!";
-            }else if(bossSpawner.bossAtk == true){
-                bossRoomText.text = "다른 타워가 전투 중!";
-            } 
-        }
-
-        // 타워가 보스방에있는데 클릭하면 보스방으로 이동하는 버튼을 비활성화
-        if(bossSpawner.bossAtk == true){
-            // 타워가 보스방에 있지않는 타워라면 
-            if(currentTower.bossmode == false){
-                bossButton.interactable = false;
-            }else{  
-                // 반대로 보스방에 있는 타워라면
-                bossButton.interactable = true;
-            }
-        }
-
-
         if(currentTower.WeaponType == WeaponType.Cannon || currentTower.WeaponType == WeaponType.Laser)
         {
             imageTower.rectTransform.sizeDelta = new Vector2(88, 59);
@@ -150,6 +121,11 @@ public class TowerDataViewer : MonoBehaviour
 
     public void OnClickEventMoveBossRoom(){
         currentTower.MoveBossScene();
+        OffPanel();
+    }
+
+    public void OnClickMoveTower(){
+        currentTower.MoveTower();
         OffPanel();
     }
 }

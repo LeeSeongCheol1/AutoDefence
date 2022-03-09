@@ -839,7 +839,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1719068136}
         m_TargetAssemblyTypeName: TowerDataViewer, Assembly-CSharp
-        m_MethodName: OnClickEventMoveBossRoom
+        m_MethodName: OnClickMoveTower
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9846,10 +9846,7 @@ MonoBehaviour:
   textSellCost: {fileID: 1177616978}
   towerAttackRange: {fileID: 1330700551}
   buttonUpgrade: {fileID: 202935486}
-  bossButton: {fileID: 1582249103}
   systemTextViewer: {fileID: 1733331254}
-  bossRoomText: {fileID: 894144074}
-  bossSpawner: {fileID: 349706607}
 --- !u!1 &1721040182
 GameObject:
   m_ObjectHideFlags: 0
@@ -10385,6 +10382,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerSpawner: {fileID: 582656414}
   towerDataViewer: {fileID: 1719068136}
+  moveStatus: 0
 --- !u!4 &1812662052
 Transform:
   m_ObjectHideFlags: 0
