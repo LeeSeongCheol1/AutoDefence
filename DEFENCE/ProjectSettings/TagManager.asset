@@ -15,6 +15,7 @@ TagManager:
   - SpawnText
   - moveTower1
   - moveTower2
+  - Cancel
   layers:
   - Default
   - TransparentFX

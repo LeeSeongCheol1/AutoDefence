@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;  
 
 public class ObjectDetector : MonoBehaviour
 {
@@ -9,6 +10,10 @@ public class ObjectDetector : MonoBehaviour
     private TowerSpawner towerSpawner;
     [SerializeField]
     private TowerDataViewer towerDataViewer;
+    [SerializeField]
+    private SystemTextViewer systemTextViewer;
+    [SerializeField]
+    private Button cancelButton;
 
     private Camera mainCamera;
     private Ray ray;
@@ -29,8 +34,6 @@ public class ObjectDetector : MonoBehaviour
     async void Update()
     {
         // 마우스가 UI에 머물러 있을 때는 아래 코드 실행 x
-        
-
         if (Input.GetMouseButtonDown(0))
         {
             if(moveStatus == false){
@@ -94,6 +97,10 @@ public class ObjectDetector : MonoBehaviour
                         weapon1.disable = true;
                     }else if (hit.transform.CompareTag("Tile"))
                     {
+                        if(towerSpawner.towernum >= towerSpawner.maxnum){
+                            systemTextViewer.PrintText(SystemType.TowerMax);
+                            return;
+                        }
                         gameObject1 = GameObject.FindGameObjectWithTag("moveTower1");
                         gameObject1.transform.position = hit.transform.position + Vector3.back; 
                         gameObject1.tag = "Tower";
@@ -109,6 +116,20 @@ public class ObjectDetector : MonoBehaviour
                     }
                 }
             }
+        }else if (Input.GetMouseButtonUp(0))
+        {
+            // 마우스를 눌렀을 때 선택한 오브젝트가 없거나 타워가 아니라면
+            if(hitTransform == null || hitTransform.CompareTag("Tower") == false)
+            {
+                // 정보 패널 비활성화
+                towerDataViewer.OffPanel();
+                cancelButton.gameObject.SetActive(false);
+            }
         }
+    }
+
+    public void cancelbuttonClicked(){
+        towerDataViewer.OffPanel();
+        cancelButton.gameObject.SetActive(false);
     }
 }

@@ -139,11 +139,12 @@ public class TowerWeapon : MonoBehaviour
 
     private void RotateToTarget()
     {
+        float rotateSpeed = 5.0f;
         float dx = attackTarget.position.x - transform.position.x;
         float dy = attackTarget.position.y - transform.position.y;
 
         float degree = Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(0, 0, degree);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0.0f, 0.0f, degree), rotateSpeed * Time.deltaTime);
     }
 
     private IEnumerator SearchTarget()
@@ -407,11 +408,14 @@ public class TowerWeapon : MonoBehaviour
             return false;
         }
 
-
-        towerarr[y[0]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
-        towerarr[y[1]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
-        Destroy(towerarr[y[0]]);
-        Destroy(towerarr[y[1]]);
+        for(int i = 0; i<2;i++){
+            if(towerarr[y[i]].GetComponent<TowerWeapon>().disable == false){
+                towerSpawner.towernum--;
+            }
+            towerarr[y[i]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
+            Destroy(towerarr[y[i]]);
+            towerSpawner.UpdateTowerText();
+        }
 
         level++;
         // 타워 외형 변경(Sprite)

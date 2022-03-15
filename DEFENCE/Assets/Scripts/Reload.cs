@@ -18,6 +18,10 @@ public class Reload : MonoBehaviour
     private TextMeshProUGUI[] texts;
     [SerializeField]
     private Sprite[] sprites;
+    [SerializeField]
+    private SystemTextViewer systemTextViewer;
+
+    GameObject PlayerGold;
 
     int ranum1 = 0;
 
@@ -31,6 +35,7 @@ public class Reload : MonoBehaviour
 
     private void Awake()
     {
+        PlayerGold = GameObject.Find("PlayerStats");
         reloadUpdate();
         Reloading();
     }
@@ -81,6 +86,17 @@ public class Reload : MonoBehaviour
         }
     }
 
+    public void reloadPurchase(){
+        bool isSuccess = PlayerGold.GetComponent<PlayerGold>().purchaseOX(2);
+
+        if(isSuccess == true){
+            Reloading();
+        }else
+        {
+            systemTextViewer.PrintText(SystemType.Money);
+        }
+            
+    }
     public void Reloading()
     {
         for (int i = 0; i < 6; i++)

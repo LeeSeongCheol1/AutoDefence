@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;   
 using TMPro;
 
 public class TowerSpawner : MonoBehaviour
@@ -29,6 +30,8 @@ public class TowerSpawner : MonoBehaviour
     private PlayerLV playerLV;
     [SerializeField]
     private TextMeshProUGUI towerText;
+    [SerializeField]
+    private Button cancelButton;
     private bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;
@@ -59,9 +62,8 @@ public class TowerSpawner : MonoBehaviour
 
         // 타워 이미 클릭했다고 판정, 두번 클릭시 중복x를 위해 클릭했다고 판정
         isOnTowerButton = true;
+        cancelButton.gameObject.SetActive(true);
 
-        // 마우스
-        followTowerClone = Instantiate(towerTemplate[towerType].followTowerPrefab);
 
         StartCoroutine("OnTowerCancelSystem");
     }
@@ -99,14 +101,12 @@ public class TowerSpawner : MonoBehaviour
         OnBuffAllBuffTowers();
         // 배치 다 하고나면 임시 타워 삭제
         Destroy(followTowerClone);
-
+        cancelButton.gameObject.SetActive(false);
         StopCoroutine("OnTowerCancelSystem");
     }
 
     public void SpawnTower(Transform tileTransform)
     {
-
-
         // 타워를 클릭한 상태가 아니라면 타워 건설x
         if(isOnTowerButton == false)
         {
@@ -156,10 +156,9 @@ public class TowerSpawner : MonoBehaviour
         // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
         OnBuffAllBuffTowers();
-
         // 배치 다 하고나면 임시 타워 삭제
         Destroy(followTowerClone);
-
+        cancelButton.gameObject.SetActive(false);
         StopCoroutine("OnTowerCancelSystem");
     }
 
@@ -176,6 +175,13 @@ public class TowerSpawner : MonoBehaviour
             }
             yield return null;
         }
+    }
+
+    public void cancelbuttonClicked(){
+        isOnTowerButton = false;
+        Destroy(followTowerClone);
+        StopCoroutine("OnTowerCancelSystem");
+        cancelButton.gameObject.SetActive(false);
     }
 
     public void OnBuffAllBuffTowers()

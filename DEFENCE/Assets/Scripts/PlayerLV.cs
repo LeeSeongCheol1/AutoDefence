@@ -39,8 +39,8 @@ public class PlayerLV : MonoBehaviour
 
     private void Awake()
     {
-        currentLevel.text = "플레이어 레벨 : " + 1;
-        currentExperience.text = "Exp : "+currentExp + " / " + level[currentLV];
+        currentLevel.text = "1";
+        currentExperience.text = currentExp + " / " + level[currentLV];
         PlayerGold = GameObject.Find("PlayerStats");
         Reload = GameObject.Find("RELOAD");
     }
@@ -50,8 +50,8 @@ public class PlayerLV : MonoBehaviour
 
         if(currentLV == 8)
         {
-            currentLevel.text = "플레이어 레벨 : MAX";
-            currentExperience.text = "Exp : MAX";
+            currentLevel.text = "MAX";
+            currentExperience.text = "MAX";
             towerSpawner.UpdateTowerText();
             return;
         }
@@ -76,14 +76,14 @@ public class PlayerLV : MonoBehaviour
         if (currentLV == 8)
         {
             buttonUpgrade.interactable = false;
-            currentLevel.text = "플레이어 레벨 : MAX";
-            currentExperience.text = "Exp : MAX";
+            currentLevel.text = "MAX";
+            currentExperience.text = "MAX";
             towerSpawner.UpdateTowerText();
             return;
         }
 
-        currentLevel.text = "플레이어 레벨 : " + currentLV;
-        currentExperience.text = "Exp : " + currentExp + " / " + level[currentLV];
+        currentLevel.text = ""+currentLV;
+        currentExperience.text = currentExp + " / " + level[currentLV];
         towerSpawner.UpdateTowerText();
 
     }
