@@ -35,7 +35,6 @@ public class EnemySpawner : MonoBehaviour
     public void StartWave(Wave wave)
     {
         currentWave = wave;
-        currentEnemyCount = currentWave.maxEnemyCount;
         StartCoroutine("SpawnEnemy");
     }
 
@@ -57,6 +56,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnEnemyHPSlider(clone);
 
             spawnEnemyCount++;
+            currentEnemyCount++;
 
             yield return new WaitForSeconds(currentWave.spawnTime);
         }
@@ -79,7 +79,7 @@ public class EnemySpawner : MonoBehaviour
         GameObject sliderClone = Instantiate(enemyHPSliderPrefab);
         // UI를 캔버스의 자식오브젝트로 설정하여 화면에 보이게 함
         sliderClone.transform.SetParent(canvasTransform);
-        // 계승(상속)하여 바뀐 크기를 다시 (1,1,1)로 설정
+        // 상속하여 바뀐 크기를 다시 (1,1,1)로 설정
         sliderClone.transform.localScale = Vector3.one;
         // Slider UI가 쫓아다닐 대상을 본인으로 설정
         sliderClone.GetComponent<SliderPositionAutoSetter>().Setup(enemy.transform);

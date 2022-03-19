@@ -331,15 +331,16 @@ public class TowerWeapon : MonoBehaviour
         GameObject clone = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
         // clone.GetComponent<Projectile>().Setup(attackTarget,towerTemplate.weapon[level].damage);
         int damage = (int)(Random.Range(minDamage,maxDamage+1)+synergyDamage);
+        bool cri = randomOX(Critical);
 
-        if (randomOX(Critical))
+        if (cri)
         {
             damage = (int)(maxDamage + AddedDamage) * 2;
         }
         else {
             damage = damage + (int)AddedDamage;
         }
-        clone.GetComponent<Projectile>().Setup(attackTarget, damage);
+        clone.GetComponent<Projectile>().Setup(attackTarget, damage,cri);
     }
 
     private bool randomOX(float criticalRate)
