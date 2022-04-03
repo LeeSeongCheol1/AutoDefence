@@ -27,6 +27,10 @@ public class WaveSystem : MonoBehaviour
             {
                 addGold = 5;
             }
+
+            if(enemySpawner.currentEnemyCount == 0){
+                addGold += 3;
+            }
             // 골드 더하기
             playerGold.CurrentGold += (5 + addGold);
             currentWaveIndex++;

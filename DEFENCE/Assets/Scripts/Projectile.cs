@@ -40,7 +40,6 @@ public class Projectile : MonoBehaviour
         if(collision.CompareTag("Enemy")){
             collision.GetComponent<EnemyHP>().TakeDamage(damage);
             Vector3 pos = Camera.main.WorldToScreenPoint(collision.transform.position);
-            DamageTextController.Instance.CreateDamageText(pos, (int)damage  );
             Destroy(gameObject);
         }else if(collision.CompareTag("Boss")){
             collision.GetComponent<BossHP>().TakeDamage(damage);

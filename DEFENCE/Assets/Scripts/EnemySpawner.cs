@@ -17,7 +17,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private PlayerHP playerHP;
     private Wave currentWave;
-    private int currentEnemyCount;
+    public int currentEnemyCount;
     private List<Enemy> enemyList;
 
     public List<Enemy> EnemyList => enemyList;
