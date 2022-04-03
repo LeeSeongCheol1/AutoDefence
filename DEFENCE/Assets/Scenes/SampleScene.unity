@@ -2754,6 +2754,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2841,6 +2842,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
 --- !u!1001 &540054657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3242,8 +3274,10 @@ MonoBehaviour:
   synergy: {fileID: 2049108718}
   playerLV: {fileID: 1604392730}
   towerText: {fileID: 65347523}
-  cancelPrefab: {fileID: 7223831027892891737, guid: e7b1b836d1314c34cb008a76f28f28f8,
+  cancelPrefab: {fileID: 5803798425333011506, guid: 5d995583e3b3975448c4f696f1462e70,
     type: 3}
+  tempPrefab: {fileID: 0}
+  isOnTowerButton: 0
   towernum: 0
   maxnum: 0
 --- !u!4 &582656415
@@ -4138,7 +4172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99969aa85bc235846a49281b48a3674f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGold: 10000
+  currentGold: 5
 --- !u!1001 &760314969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6126,18 +6160,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1571603342}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 1
 --- !u!114 &1199259512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9154,7 +9176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b333e1575738b494c982754467582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LimitTime: 1
+  LimitTime: 15
   text_Timer: {fileID: 1458868222}
 --- !u!61 &1604392729
 BoxCollider2D:
@@ -10802,6 +10824,7 @@ MonoBehaviour:
   towerDataViewer: {fileID: 1719068136}
   systemTextViewer: {fileID: 1733331254}
   cancelButton: {fileID: 1571603344}
+  cancelPrefab: {fileID: 0}
   moveStatus: 0
 --- !u!4 &1812662052
 Transform:
@@ -12139,7 +12162,7 @@ MonoBehaviour:
   - spawnTime: 0.5
     maxEnemyCount: 10
     enemyPrefabs:
-    - {fileID: 4609526704512384673, guid: b4773147ffd586d4a891329e86929886, type: 3}
+    - {fileID: 946864673548513174, guid: 979bdd7286a81ca4c954f95c3c86e3d1, type: 3}
   - spawnTime: 0.5
     maxEnemyCount: 10
     enemyPrefabs:
@@ -12222,6 +12245,7 @@ MonoBehaviour:
     - {fileID: 7955425235697944632, guid: 0ed790da13683ea4c8dfd7741f5aecdc, type: 3}
   enemySpawner: {fileID: 720850691}
   playerGold: {fileID: 756988554}
+  reload: {fileID: 484346192}
 --- !u!222 &2003923644
 CanvasRenderer:
   m_ObjectHideFlags: 0

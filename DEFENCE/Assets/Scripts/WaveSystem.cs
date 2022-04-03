@@ -10,6 +10,8 @@ public class WaveSystem : MonoBehaviour
     private EnemySpawner enemySpawner;
     [SerializeField]
     private PlayerGold playerGold;
+    [SerializeField]
+    private Reload reload;
 
     int addGold = 0;
     private int currentWaveIndex = -1;
@@ -20,6 +22,12 @@ public class WaveSystem : MonoBehaviour
     {
         if(currentWaveIndex < MaxWave - 1)
         {
+            currentWaveIndex++;
+            enemySpawner.StartWave(waves[currentWaveIndex]);
+            reload.Reloading();
+            if(CurrentWave <= 1){
+                return;
+            }
             // 이자
             addGold = (int)(playerGold.CurrentGold/10);
             // 이자가 5 이상이면 5로 설정
@@ -31,10 +39,7 @@ public class WaveSystem : MonoBehaviour
             if(enemySpawner.currentEnemyCount == 0){
                 addGold += 3;
             }
-            // 골드 더하기
             playerGold.CurrentGold += (5 + addGold);
-            currentWaveIndex++;
-            enemySpawner.StartWave(waves[currentWaveIndex]);
         }
     }
 }

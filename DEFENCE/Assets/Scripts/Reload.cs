@@ -123,7 +123,6 @@ public class Reload : MonoBehaviour
 
     public void btn1Clicked()
     {
-        GameObject.Find("Canvas").transform.Find("cancelButton").gameObject.SetActive(true);
         towerSpawner.ReadyToSpawnTower(type[0]);
     }
 

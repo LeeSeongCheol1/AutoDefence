@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 7443895716538329025}
   - component: {fileID: 239457713404379063}
   - component: {fileID: 1506247421080951464}
-  - component: {fileID: 2958562702338310133}
-  - component: {fileID: 1386206279291159569}
+  - component: {fileID: -5834146650026124106}
+  - component: {fileID: -6114358736992720745}
   m_Layer: 8
   m_Name: Enemy15
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 82ae05791931276468b1e45889118ca5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0eb37c3e3d2fdb54ca7feb9aace7a290, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &2958562702338310133
+--- !u!114 &-5834146650026124106
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,11 +125,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 3607702280332580116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a756993adf192ae4492ac6ddd992cc1f, type: 3}
+  m_Script: {fileID: 11500000, guid: 834b13964e397fe4ab49f4dda05ac633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
---- !u!114 &1386206279291159569
+  maxHP: 3000
+--- !u!114 &-6114358736992720745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,6 +138,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 3607702280332580116}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e6943e94c5ee447ab4f61c61b877c4, type: 3}
+  m_Script: {fileID: 11500000, guid: c602ff9eda433974085b34e3a08c5d55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

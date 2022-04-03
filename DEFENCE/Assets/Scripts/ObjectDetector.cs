@@ -14,6 +14,8 @@ public class ObjectDetector : MonoBehaviour
     private SystemTextViewer systemTextViewer;
     [SerializeField]
     private Button cancelButton;
+    [SerializeField]
+    GameObject cancelPrefab;
 
     private Camera mainCamera;
     private Ray ray;
@@ -45,6 +47,9 @@ public class ObjectDetector : MonoBehaviour
                     if (hit.transform.CompareTag("Tower"))
                     {
                         towerDataViewer.OnPanel(hit.transform);
+                    }else if(hit.transform.CompareTag("Cancel")){
+                        Destroy(towerSpawner.tempPrefab);
+                        towerSpawner.isOnTowerButton = false;
                     }else if(hit.transform.CompareTag("ExtraTile")){
                         towerSpawner.spawnExtraTower(hit.transform);
                     }else if (hit.transform.CompareTag("Tile"))

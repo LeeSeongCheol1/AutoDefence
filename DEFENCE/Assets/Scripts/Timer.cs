@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     GameObject waveStart;
     GameObject bossStart;
     GameObject EXP;
-    public float LimitTime = 60;
+    public float LimitTime = 30;
 
     [SerializeField]
     private TextMeshProUGUI text_Timer;
@@ -28,7 +28,7 @@ public class Timer : MonoBehaviour
         {
             waveStart.GetComponent<WaveSystem>().StartWave();
             bossStart.GetComponent<BossWave>().StartWave();
-            LimitTime = 60;
+            LimitTime = 30;
             EXP.GetComponent<PlayerLV>().levelUp(2);
         }
         LimitTime -= Time.deltaTime;

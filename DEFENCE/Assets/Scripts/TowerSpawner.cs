@@ -32,9 +32,10 @@ public class TowerSpawner : MonoBehaviour
     private TextMeshProUGUI towerText;
     [SerializeField]
     private GameObject cancelPrefab;
+    public GameObject tempPrefab;
 
     private TowerDataViewer towerDataViewer;
-    private bool isOnTowerButton = false;
+    public bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;
     public int towernum = 0;
@@ -61,10 +62,9 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
 
-        Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
+        tempPrefab = Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
         // 타워 이미 클릭했다고 판정, 두번 클릭시 중복x를 위해 클릭했다고 판정
         isOnTowerButton = true;
-        StartCoroutine("OnTowerCancelSystem");
     }
 
     public void spawnExtraTower(Transform tileTransform){
@@ -99,9 +99,7 @@ public class TowerSpawner : MonoBehaviour
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
         OnBuffAllBuffTowers();
         // 배치 다 하고나면 임시 타워 삭제
-        Destroy(followTowerClone);
-        
-        StopCoroutine("OnTowerCancelSystem");
+        Destroy(tempPrefab);
     }
 
     public void SpawnTower(Transform tileTransform)
@@ -156,29 +154,11 @@ public class TowerSpawner : MonoBehaviour
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
         OnBuffAllBuffTowers();
         // 배치 다 하고나면 임시 타워 삭제
-       
-        StopCoroutine("OnTowerCancelSystem");
-    }
-
-    private IEnumerator OnTowerCancelSystem()
-    {
-        while (true)
-        {
-            // esc키나 오른쪽 마우스 클릭 시 건설 취소
-            if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
-            {
-
-                isOnTowerButton = false;
-                break;  
-            }
-            yield return null;
-        }
+       Destroy(tempPrefab);
     }
 
     public void cancelbuttonClicked(){
         isOnTowerButton = false;
-        StopCoroutine("OnTowerCancelSystem");
-        
     }
 
     public void OnBuffAllBuffTowers()
