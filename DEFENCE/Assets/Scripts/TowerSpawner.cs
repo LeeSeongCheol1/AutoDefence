@@ -31,7 +31,9 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI towerText;
     [SerializeField]
-    private Button cancelButton;
+    private GameObject cancelPrefab;
+
+    private TowerDataViewer towerDataViewer;
     private bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;
@@ -45,7 +47,6 @@ public class TowerSpawner : MonoBehaviour
 
     public void ReadyToSpawnTower(int type)
     {
-
         towerType = type;
         // 버튼 중복 방지
         if(isOnTowerButton == true)
@@ -60,11 +61,9 @@ public class TowerSpawner : MonoBehaviour
             return;
         }
 
+        Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
         // 타워 이미 클릭했다고 판정, 두번 클릭시 중복x를 위해 클릭했다고 판정
         isOnTowerButton = true;
-        cancelButton.gameObject.SetActive(true);
-
-
         StartCoroutine("OnTowerCancelSystem");
     }
 
@@ -101,7 +100,7 @@ public class TowerSpawner : MonoBehaviour
         OnBuffAllBuffTowers();
         // 배치 다 하고나면 임시 타워 삭제
         Destroy(followTowerClone);
-        cancelButton.gameObject.SetActive(false);
+        
         StopCoroutine("OnTowerCancelSystem");
     }
 
@@ -157,8 +156,7 @@ public class TowerSpawner : MonoBehaviour
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
         OnBuffAllBuffTowers();
         // 배치 다 하고나면 임시 타워 삭제
-        Destroy(followTowerClone);
-        cancelButton.gameObject.SetActive(false);
+       
         StopCoroutine("OnTowerCancelSystem");
     }
 
@@ -169,9 +167,9 @@ public class TowerSpawner : MonoBehaviour
             // esc키나 오른쪽 마우스 클릭 시 건설 취소
             if (Input.GetKeyDown(KeyCode.Escape) || Input.GetMouseButtonDown(1))
             {
+
                 isOnTowerButton = false;
-                Destroy(followTowerClone);
-                break;
+                break;  
             }
             yield return null;
         }
@@ -179,9 +177,8 @@ public class TowerSpawner : MonoBehaviour
 
     public void cancelbuttonClicked(){
         isOnTowerButton = false;
-        Destroy(followTowerClone);
         StopCoroutine("OnTowerCancelSystem");
-        cancelButton.gameObject.SetActive(false);
+        
     }
 
     public void OnBuffAllBuffTowers()

@@ -22,7 +22,6 @@ public class Reload : MonoBehaviour
     private SystemTextViewer systemTextViewer;
 
     GameObject PlayerGold;
-
     int ranum1 = 0;
 
     int tier1 = 0;
@@ -124,6 +123,7 @@ public class Reload : MonoBehaviour
 
     public void btn1Clicked()
     {
+        GameObject.Find("Canvas").transform.Find("cancelButton").gameObject.SetActive(true);
         towerSpawner.ReadyToSpawnTower(type[0]);
     }
 
@@ -139,16 +139,19 @@ public class Reload : MonoBehaviour
 
     public void btn4Clicked()
     {
+
         towerSpawner.ReadyToSpawnTower(type[3]);
     }
 
     public void btn5Clicked()
     {
+
         towerSpawner.ReadyToSpawnTower(type[4]);
     }
 
     public void btn6Clicked()
     {
+
         towerSpawner.ReadyToSpawnTower(type[5]);
     }
 }

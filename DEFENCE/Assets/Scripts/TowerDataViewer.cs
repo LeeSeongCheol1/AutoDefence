@@ -52,6 +52,7 @@ public class TowerDataViewer : MonoBehaviour
         }
     }
 
+    
     public void OnPanel(Transform towerWeapon)
     {
         // 타워 정보 저장
