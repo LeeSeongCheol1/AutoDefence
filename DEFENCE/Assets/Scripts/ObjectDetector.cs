@@ -16,6 +16,8 @@ public class ObjectDetector : MonoBehaviour
     private Button cancelButton;
     [SerializeField]
     GameObject cancelPrefab;
+    [SerializeField]
+    private Reload reload;
 
     private Camera mainCamera;
     private Ray ray;
@@ -50,6 +52,7 @@ public class ObjectDetector : MonoBehaviour
                     }else if(hit.transform.CompareTag("Cancel")){
                         Destroy(towerSpawner.tempPrefab);
                         towerSpawner.isOnTowerButton = false;
+                        reload.buttons[reload.clickednum].interactable = true;
                     }else if(hit.transform.CompareTag("ExtraTile")){
                         towerSpawner.spawnExtraTower(hit.transform);
                     }else if (hit.transform.CompareTag("Tile"))

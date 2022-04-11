@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Warrior_tier1
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3683242666596492762, guid: 7f8dd2ebb61342642b0d32be9cac38b8,
+    type: 3}
+  followTowerPrefab: {fileID: 3683242666596492762, guid: 7f8dd2ebb61342642b0d32be9cac38b8,
+    type: 3}
+  weapon:
+  - towerIdentity: 
+    towerSynergy: Warrior
+    sprite: {fileID: 21300000, guid: ed99c0abf79d7e343a639bb255e1650f, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 0
+    sell: 0
+  - towerIdentity: 
+    towerSynergy: Warrior
+    sprite: {fileID: 21300000, guid: 988f8026e5f2b104c994ec90cd3c7411, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 0
+    sell: 0
+  - towerIdentity: 
+    towerSynergy: Warrior
+    sprite: {fileID: 21300000, guid: 9816da298c7f6714ab2115e4c277e1d0, type: 3}
+    critical: 0
+    minDamage: 0
+    maxDamage: 0
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 0
+    sell: 0

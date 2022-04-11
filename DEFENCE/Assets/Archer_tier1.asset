@@ -10,26 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
-  m_Name: Tower02Laser
+  m_Name: Archer_tier1
   m_EditorClassIdentifier: 
-  towerPrefab: {fileID: 2209083360986232846, guid: 5ac130ed51e3ee6488f0b6b8a3231422,
+  towerPrefab: {fileID: 3683242666596492762, guid: 7f8dd2ebb61342642b0d32be9cac38b8,
     type: 3}
   followTowerPrefab: {fileID: 6686703772809165608, guid: 5012bef228842c84fbb2c4eb38468001,
     type: 3}
   weapon:
   - towerIdentity: Tower02_lv1
-    sprite: {fileID: 21300000, guid: f777a251056772b4980e9aa5dd19da30, type: 3}
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: 371ef754937a5ac47986268345edb32e, type: 3}
     critical: 0
     minDamage: 0
     maxDamage: 0
     slow: 0
     buff: 0
-    rate: 0
+    rate: 0.62
     range: 3
-    cost: 200
-    sell: 100
+    cost: 1
+    sell: 1
   - towerIdentity: Tower02_lv2
-    sprite: {fileID: 21300000, guid: eec7081b88b316e49ac5843d0ca1ac6e, type: 3}
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: a507e2aef7a92e84fb1f224e48deb125, type: 3}
     critical: 0
     minDamage: 0
     maxDamage: 0
@@ -37,10 +39,11 @@ MonoBehaviour:
     buff: 0
     rate: 0
     range: 3
-    cost: 350
-    sell: 150
+    cost: 1
+    sell: 2
   - towerIdentity: Tower02_lv3
-    sprite: {fileID: 21300000, guid: b3b88829994060f468c66de052d30c63, type: 3}
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: 304dae55292ea9b4db3fd039e3bb8c6b, type: 3}
     critical: 0
     minDamage: 0
     maxDamage: 0
@@ -48,5 +51,5 @@ MonoBehaviour:
     buff: 0
     rate: 0
     range: 5
-    cost: 400
-    sell: 200
+    cost: 1
+    sell: 6

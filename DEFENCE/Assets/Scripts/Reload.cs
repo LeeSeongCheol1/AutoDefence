@@ -20,6 +20,10 @@ public class Reload : MonoBehaviour
     private Sprite[] sprites;
     [SerializeField]
     private SystemTextViewer systemTextViewer;
+    [SerializeField]
+    private TextMeshProUGUI[] synergyTexts;
+    [SerializeField]
+    public Button[] buttons;
 
     GameObject PlayerGold;
     int ranum1 = 0;
@@ -31,6 +35,7 @@ public class Reload : MonoBehaviour
 
     int[] tier = new int[6];
     int[] type = new int[6];
+    public int clickednum = 0;
 
     private void Awake()
     {
@@ -116,6 +121,7 @@ public class Reload : MonoBehaviour
             {
                 tier[i] = 4;
             }
+            synergyTexts[i].text = towerTemplate[type[i]].weapon[0].towerSynergy;
             texts[i].text = "$" + towerTemplate[type[i]].weapon[0].cost;
             btns[i].sprite = sprites[type[i]];    
         }
@@ -124,33 +130,43 @@ public class Reload : MonoBehaviour
     public void btn1Clicked()
     {
         towerSpawner.ReadyToSpawnTower(type[0]);
+        buttons[0].interactable = false;
+        clickednum = 0;
+        
     }
 
     public void btn2Clicked()
     {
         towerSpawner.ReadyToSpawnTower(type[1]);
+        buttons[1].interactable = false;
+        clickednum = 1;
     }
 
     public void btn3Clicked()
     {
         towerSpawner.ReadyToSpawnTower(type[2]);
+        buttons[2].interactable = false;
+        clickednum = 2;
     }
 
     public void btn4Clicked()
     {
-
         towerSpawner.ReadyToSpawnTower(type[3]);
+        buttons[3].interactable = false;
+        clickednum = 3;
     }
 
     public void btn5Clicked()
     {
-
         towerSpawner.ReadyToSpawnTower(type[4]);
+        buttons[4].interactable = false;
+        clickednum = 4;
     }
 
     public void btn6Clicked()
     {
-
         towerSpawner.ReadyToSpawnTower(type[5]);
+        buttons[5].interactable = false;
+        clickednum = 5;
     }
 }

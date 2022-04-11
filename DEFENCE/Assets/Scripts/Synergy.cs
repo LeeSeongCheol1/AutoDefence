@@ -12,6 +12,7 @@ public class Synergy : MonoBehaviour
     int[] synergy = new int[6];
     float[] synergyBuff = new float[5];
 
+    //버프배열  0 : 공격력/1 : 크리티컬/2 : 공속/3 : 범위/4 : 이감
     public void chkSynergy(string TowerSynergy){
         
         string bufftext = "";
@@ -25,8 +26,29 @@ public class Synergy : MonoBehaviour
                     synergyBuff[0] += 100;
                 }
                 break;
-            case "Warrior":
+            case "Archer":
                 synergy[1]++;
+                if(synergy[1] == 2){
+                    synergyBuff[3] += 3;
+                }else if(synergy[1] == 4){
+                    synergyBuff[1] += 30;
+                }
+                break;
+            case "Hunter":
+                synergy[2]++;
+                if(synergy[2] == 2){
+                    synergyBuff[3] += 3;
+                }else if(synergy[2] == 4){
+                    synergyBuff[0] += 100;
+                }
+                break;
+            case "Warrior":
+                synergy[3]++;
+                if(synergy[3] == 2){
+                    synergyBuff[0] += 100;
+                }else if(synergy[3] == 4){
+                    synergyBuff[4] += 100;
+                }
                 break;
         }
 
@@ -37,6 +59,12 @@ public class Synergy : MonoBehaviour
                         bufftext += "Assasin : "+synergy[i];
                         break;
                     case 1 :
+                        bufftext += "Archer : "+synergy[i];
+                        break;
+                    case 2 :
+                        bufftext += "Hunter : "+synergy[i];
+                        break;
+                    case 3 :
                         bufftext += "Warrior : "+synergy[i];
                         break;
                 }
@@ -71,8 +99,29 @@ public class Synergy : MonoBehaviour
                     synergyBuff[0] -= 100;
                 }
                 break;
-            case "Warrior":
+            case "Archer":
                 synergy[1]--;
+                if(synergy[1] == 1){
+                    synergyBuff[3] -= 30;
+                }else if(synergy[1] == 3){
+                    synergyBuff[3] -= 100;
+                }
+                break;
+            case "Hunter":
+                synergy[2]--;
+                if(synergy[2] == 1){
+                    synergyBuff[3] -= 30;
+                }else if(synergy[2] == 3){
+                    synergyBuff[3] -= 100;
+                }
+                break;
+            case "Warrior":
+                synergy[3]--;
+                if(synergy[3] == 1){
+                    synergyBuff[3] -= 30;
+                }else if(synergy[3] == 3){
+                    synergyBuff[3] -= 100;
+                }
                 break;
         }
 
@@ -80,9 +129,15 @@ public class Synergy : MonoBehaviour
             if(synergy[i]>0){
                 switch(i){
                     case 0 :
-                        bufftext += "Assasin : "+synergy[i];
+                        bufftext += "Assasin : "+synergy[i]+" ";
                         break;
                     case 1 :
+                        bufftext += "Archer : "+synergy[i]+" ";
+                        break;
+                    case 2 :
+                        bufftext += "Hunter : "+synergy[i];
+                        break;
+                    case 3 :
                         bufftext += "Warrior : "+synergy[i];
                         break;
                 }
@@ -105,4 +160,3 @@ public class Synergy : MonoBehaviour
     }
 
 }
-

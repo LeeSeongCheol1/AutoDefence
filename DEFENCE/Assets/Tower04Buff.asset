@@ -18,6 +18,7 @@ MonoBehaviour:
     type: 3}
   weapon:
   - towerIdentity: Tower04_lv1
+    towerSynergy: 
     sprite: {fileID: 21300000, guid: a195093f0bd6a644ebf3acd69238a961, type: 3}
     critical: 0
     minDamage: 0
@@ -26,9 +27,10 @@ MonoBehaviour:
     buff: 0.3
     rate: 0
     range: 2
-    cost: 800
-    sell: 400
+    cost: 1
+    sell: 1
   - towerIdentity: Tower04_lv2
+    towerSynergy: 
     sprite: {fileID: 21300000, guid: bf9e90ad8934cf44cb2e595a3bad2994, type: 3}
     critical: 0
     minDamage: 0
@@ -37,9 +39,10 @@ MonoBehaviour:
     buff: 0.7
     rate: 0
     range: 2
-    cost: 1400
-    sell: 700
+    cost: 1
+    sell: 2
   - towerIdentity: Tower04_lv3
+    towerSynergy: 
     sprite: {fileID: 21300000, guid: 12e0f53fc74dc4f43b3a67a9451cc3b3, type: 3}
     critical: 0
     minDamage: 0
@@ -48,5 +51,5 @@ MonoBehaviour:
     buff: 1
     rate: 0
     range: 2
-    cost: 2000
-    sell: 1000
+    cost: 1
+    sell: 6

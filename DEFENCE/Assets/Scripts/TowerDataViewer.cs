@@ -44,15 +44,6 @@ public class TowerDataViewer : MonoBehaviour
         OffPanel();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            OffPanel();
-        }
-    }
-
-    
     public void OnPanel(Transform towerWeapon)
     {
         // 타워 정보 저장
@@ -76,8 +67,9 @@ public class TowerDataViewer : MonoBehaviour
     {
         if(currentTower.WeaponType == WeaponType.Cannon || currentTower.WeaponType == WeaponType.Laser)
         {
+            float add = currentTower.AddedDamage+currentTower.synergyDamage;
             imageTower.rectTransform.sizeDelta = new Vector2(88, 59);
-            textDamege.text = currentTower.minDamage+" ~ "+currentTower.maxDamage+" + "+"<color=red>"+currentTower.AddedDamage.ToString("F1")+"</color>";
+            textDamege.text = currentTower.minDamage+" ~ "+currentTower.maxDamage+" + "+"<color=red>"+add.ToString("F1")+"</color>";
         }
         else
         {
@@ -98,7 +90,6 @@ public class TowerDataViewer : MonoBehaviour
         textRate.text = "Rate : " + currentTower.Rate;
         textRange.text = "Range : " + currentTower.Range;
         textLevel.text = "Level : " + currentTower.Level;
-        textUpgradeCost.text = currentTower.UpgradeCost.ToString();
         textSellCost.text = currentTower.SellCost.ToString();
 
         // 업그레이드가 불가능해지면 비활성화

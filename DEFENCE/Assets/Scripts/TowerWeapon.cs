@@ -219,23 +219,6 @@ public class TowerWeapon : MonoBehaviour
     {
         while (true)
         {
-            /*
-            if(attackTarget == null)
-            {
-                ChangeState(WeaponState.SearchTarget);
-                break;
-            }
-
-            //target이 공격 범위 안에 있는지 검사
-            float distance = Vector3.Distance(attackTarget.position, transform.position);
-            // if(distance > attackRange)
-            if(distance > towerTemplate.weapon[level].range)
-            {
-                attackTarget = null;
-                ChangeState(WeaponState.SearchTarget);
-                break;
-            }
-            */
 
         if(IsPossibleToAttackTarget() == false)
         {
@@ -286,7 +269,7 @@ public class TowerWeapon : MonoBehaviour
             {
                 float distance = Vector3.Distance(enemySpawner.EnemyList[i].transform.position, transform.position);
                 // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
-                if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+                if (distance <= towerTemplate.weapon[level].range+synergyRange&& distance <= closestDistSqr)
                 {
                 closestDistSqr = distance;
                 attackTarget = enemySpawner.EnemyList[i].transform;
@@ -297,7 +280,7 @@ public class TowerWeapon : MonoBehaviour
             {
                 float distance = Vector3.Distance(bossSpawner.EnemyList[i].transform.position, transform.position);
                 // 현재 검사중인 적과의 거리가 공격 범위 내에 있고, 현재까지 검사한 적보다 거리가 가깝다면
-                if (distance <= towerTemplate.weapon[level].range && distance <= closestDistSqr)
+                if (distance <= towerTemplate.weapon[level].range+synergyRange && distance <= closestDistSqr)
                 {
                     closestDistSqr = distance;
                     attackTarget = bossSpawner.EnemyList[i].transform;
@@ -318,7 +301,7 @@ public class TowerWeapon : MonoBehaviour
 
         // target이 공격 범위 안에 있는지 검사(공격 범위를 넘어가면 새로운 적 탐색)
         float distance = Vector3.Distance(attackTarget.position, transform.position);
-        if(distance > towerTemplate.weapon[level].range)
+        if(distance > towerTemplate.weapon[level].range+synergyRange)
         {
             attackTarget = null;
             return false;
@@ -421,8 +404,6 @@ public class TowerWeapon : MonoBehaviour
         level++;
         // 타워 외형 변경(Sprite)
         spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
-        // 골드 차감
-        playerGold.CurrentGold -= towerTemplate.weapon[level].cost;
 
         // 무기 속정이 레이저라면
         if(weaponType == WeaponType.Laser)

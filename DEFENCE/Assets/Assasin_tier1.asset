@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
-  m_Name: Tower01Cannon
+  m_Name: Assasin_tier1
   m_EditorClassIdentifier: 
   towerPrefab: {fileID: 8973816913900138584, guid: dea02d2b89cb4534a896bf8faa708daf,
     type: 3}
@@ -27,8 +27,8 @@ MonoBehaviour:
     buff: 0
     rate: 0.62
     range: 2
-    cost: 50
-    sell: 25
+    cost: 1
+    sell: 1
   - towerIdentity: Tower01_lv2
     towerSynergy: Assasin
     sprite: {fileID: 21300000, guid: 2fcd9a306c9555448bb291a069bb11d8, type: 3}
@@ -39,8 +39,8 @@ MonoBehaviour:
     buff: 0
     rate: 0.48
     range: 2.3
-    cost: 100
-    sell: 75
+    cost: 0
+    sell: 2
   - towerIdentity: Tower01_lv3
     towerSynergy: Assasin
     sprite: {fileID: 21300000, guid: c1cf2799ee0fadb4aa959051a5fb8f07, type: 3}
@@ -51,5 +51,5 @@ MonoBehaviour:
     buff: 0
     rate: 0.3
     range: 2.5
-    cost: 150
-    sell: 150
+    cost: 0
+    sell: 6

@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     GameObject waveStart;
     GameObject bossStart;
     GameObject EXP;
-    public float LimitTime = 30;
+    public float LimitTime = 15;
 
     [SerializeField]
     private TextMeshProUGUI text_Timer;
