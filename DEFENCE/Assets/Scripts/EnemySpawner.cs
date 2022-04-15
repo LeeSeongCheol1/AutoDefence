@@ -16,6 +16,9 @@ public class EnemySpawner : MonoBehaviour
     private Transform[] wayPoints;
     [SerializeField]
     private PlayerHP playerHP;
+    [SerializeField]
+    private GameOver gameOver;
+
     private Wave currentWave;
     public int currentEnemyCount;
     private List<Enemy> enemyList;
@@ -36,6 +39,12 @@ public class EnemySpawner : MonoBehaviour
     {
         currentWave = wave;
         StartCoroutine("SpawnEnemy");
+    }
+
+    public void Update(){
+        if(currentEnemyCount > 60){
+            gameOver.gameOver();
+        }
     }
 
     private IEnumerator SpawnEnemy()
@@ -67,6 +76,9 @@ public class EnemySpawner : MonoBehaviour
         if(type == EnemyDestroyType.Arrive)
         {
             playerHP.TakeDamage(1);
+            if(playerHP.CurrentHP == 0){
+                gameOver.gameOver();
+            }
         }
 
         currentEnemyCount--;

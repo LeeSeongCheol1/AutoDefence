@@ -132,6 +132,10 @@ public class TowerDataViewer : MonoBehaviour
         {
             systemTextViewer.PrintText(SystemType.Money);
         }
+
+        
+        OffPanel();
+        cancelButton.gameObject.SetActive(false);
     }
 
     public void OnClickEventTowerSell()

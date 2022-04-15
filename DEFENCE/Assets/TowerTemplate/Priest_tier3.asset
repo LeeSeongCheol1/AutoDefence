@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Priest_tier3
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 6234614710338654144, guid: a2b25204141962143bb7b100d6021c5a,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Priest_tier3_lv1
+    towerSynergy: Priest
+    sprite: {fileID: 21300000, guid: 444ccf4144d98204aa8dc6865b7bbace, type: 3}
+    critical: 0
+    minDamage: 40
+    maxDamage: 43
+    slow: 0
+    buff: 0
+    rate: 0.6
+    range: 3
+    cost: 0
+    sell: 3
+  - towerIdentity: Priest_tier3_lv2
+    towerSynergy: Priest
+    sprite: {fileID: 21300000, guid: 427db9aa61a63ad438896be1fd30bc53, type: 3}
+    critical: 0
+    minDamage: 130
+    maxDamage: 133
+    slow: 0
+    buff: 0
+    rate: 0.5
+    range: 3
+    cost: 0
+    sell: 6
+  - towerIdentity: Priest_tier3_lv3
+    towerSynergy: Priest
+    sprite: {fileID: 21300000, guid: a7c80abd491bb724f9f3e6278bed311d, type: 3}
+    critical: 0
+    minDamage: 212
+    maxDamage: 215
+    slow: 0
+    buff: 0
+    rate: 0.35
+    range: 5
+    cost: 0
+    sell: 18

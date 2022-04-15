@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Pirate_tier3
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 6603928024583336600, guid: 71cb46365c6fa5644863e3972686ed4c,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Pirate_tier3_lv1
+    towerSynergy: Pirate
+    sprite: {fileID: 21300000, guid: b556a98b3552d7d4899ea35ed98aef31, type: 3}
+    critical: 30
+    minDamage: 67
+    maxDamage: 70
+    slow: 0
+    buff: 0
+    rate: 0.46
+    range: 2
+    cost: 3
+    sell: 3
+  - towerIdentity: Pirate_tier3_lv2
+    towerSynergy: Pirate
+    sprite: {fileID: 21300000, guid: 1323db7b2b0854e41ac6e45a9df0b07b, type: 3}
+    critical: 50
+    minDamage: 180
+    maxDamage: 183
+    slow: 0
+    buff: 0
+    rate: 0.4
+    range: 2
+    cost: 0
+    sell: 6
+  - towerIdentity: Pirate_tier3_lv3
+    towerSynergy: Pirate
+    sprite: {fileID: 21300000, guid: f0d62f38eb5e9b0438df6d54476afb9d, type: 3}
+    critical: 80
+    minDamage: 311
+    maxDamage: 314
+    slow: 0
+    buff: 0
+    rate: 0.3
+    range: 2
+    cost: 0
+    sell: 18

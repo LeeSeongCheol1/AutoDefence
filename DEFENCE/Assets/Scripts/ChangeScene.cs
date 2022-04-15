@@ -12,4 +12,8 @@ public class ChangeScene : MonoBehaviour
     public void exitClicked(){
         Application.Quit();
     }
+
+    public void gameOverClicked(){
+        SceneManager.LoadScene("Main");
+    }
 }

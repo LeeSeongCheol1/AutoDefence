@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Magicain_template
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3773692882257261006, guid: 5a2ac07f2fec21243b88048a5c5ffb77,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Magician_tier1_lv1
+    towerSynergy: Magician
+    sprite: {fileID: 21300000, guid: 7d71b2ff053618548849ba0d97c50441, type: 3}
+    critical: 0
+    minDamage: 100
+    maxDamage: 103
+    slow: 0
+    buff: 0
+    rate: 1
+    range: 1.5
+    cost: 1
+    sell: 1
+  - towerIdentity: Magician_tier1_lv2
+    towerSynergy: Magician
+    sprite: {fileID: 21300000, guid: 0e8899194bece134a9c2a99b220ef49c, type: 3}
+    critical: 0
+    minDamage: 200
+    maxDamage: 203
+    slow: 0
+    buff: 0
+    rate: 1.5
+    range: 1
+    cost: 0
+    sell: 2
+  - towerIdentity: Magician_tier1_lv3
+    towerSynergy: Magician
+    sprite: {fileID: 21300000, guid: 54899eea457aa3743bc26a6be8c58cbb, type: 3}
+    critical: 0
+    minDamage: 300
+    maxDamage: 303
+    slow: 0
+    buff: 0
+    rate: 1.5
+    range: 1
+    cost: 0
+    sell: 6

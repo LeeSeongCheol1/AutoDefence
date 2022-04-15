@@ -7,7 +7,14 @@ using TMPro;
 public class TowerSpawner : MonoBehaviour
 {
     [SerializeField]
-    private TowerTemplate[] towerTemplate;
+    private TowerTemplate[] towerTemplate_tier1;
+    [SerializeField]
+    private TowerTemplate[] towerTemplate_tier2;
+    [SerializeField]
+    private TowerTemplate[] towerTemplate_tier3;
+
+    [SerializeField]
+    private Synergy synergy;
 
     /*
     [SerializeField]
@@ -25,8 +32,6 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField]
     private SystemTextViewer systemTextViewer;
     [SerializeField]
-    private Synergy synergy;
-    [SerializeField]
     private PlayerLV playerLV;
     [SerializeField]
     private TextMeshProUGUI towerText;
@@ -39,6 +44,7 @@ public class TowerSpawner : MonoBehaviour
     private GameObject followTowerClone = null;
     private int towerType;
     public int towernum = 0;
+    public int towertier = 0;
     public int maxnum = 0;
 
     private void Awake() {
@@ -46,20 +52,39 @@ public class TowerSpawner : MonoBehaviour
         UpdateTowerText();
     }
 
-    public void ReadyToSpawnTower(int type)
+    public void ReadyToSpawnTower(int tier, int type)
     {
         towerType = type;
+        towertier = tier;
         // 버튼 중복 방지
         if(isOnTowerButton == true)
         {
             return;
         }
 
-        // 골드가 없으면 건설 x
-        if(towerTemplate[towerType].weapon[0].cost > playerGold.CurrentGold)
-        {
-            systemTextViewer.PrintText(SystemType.Money);
-            return;
+        switch(tier){
+            case 1:
+           if(towerTemplate_tier1[towerType].weapon[0].cost > playerGold.CurrentGold)
+            {
+                systemTextViewer.PrintText(SystemType.Money);
+                return;
+            }
+            break;
+            case 2:
+            if(towerTemplate_tier2[towerType].weapon[0].cost > playerGold.CurrentGold)
+            {
+                systemTextViewer.PrintText(SystemType.Money);
+                return;
+            }
+            break;
+            case 3:
+            if(towerTemplate_tier3[towerType].weapon[0].cost > playerGold.CurrentGold)
+            {
+                systemTextViewer.PrintText(SystemType.Money);
+                return;
+            }
+            break;
+
         }
 
         tempPrefab = Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
@@ -85,20 +110,37 @@ public class TowerSpawner : MonoBehaviour
         isOnTowerButton = false;
         // 타워가 지워져있음으로 설정
         tile.IsBuildTower = true;
-        // 타워 건설에 필요한 골드만큼 감소
-        // playerGold.CurrentGold -= towerBuildGold;
-        playerGold.CurrentGold -= towerTemplate[towerType].weapon[0].cost;
         // 선택한 타일 위치에 타워 건설
         Vector3 position = tileTransform.position + Vector3.back;
-        // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
-        GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
-        // 여분의 자리에만 두는것이기떄문에 공격은 x인상태로 설정
-        clone.GetComponent<TowerWeapon>().disable = true;
-        clone.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
-        // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
-        // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
+
+        switch(towertier){
+            case 1:
+                playerGold.CurrentGold -= towerTemplate_tier1[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone1 = Instantiate(towerTemplate_tier1[towerType].towerPrefab, position, Quaternion.identity);
+                // 여분의 자리에만 두는것이기떄문에 공격은 x인상태로 설정
+                clone1.GetComponent<TowerWeapon>().disable = true;
+                clone1.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+            break;
+            case 2:
+                playerGold.CurrentGold -= towerTemplate_tier2[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone2 = Instantiate(towerTemplate_tier2[towerType].towerPrefab, position, Quaternion.identity);
+                // 여분의 자리에만 두는것이기떄문에 공격은 x인상태로 설정
+                clone2.GetComponent<TowerWeapon>().disable = true;
+                clone2.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+            break;
+            case 3:
+                playerGold.CurrentGold -= towerTemplate_tier3[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone3 = Instantiate(towerTemplate_tier3[towerType].towerPrefab, position, Quaternion.identity);
+                // 여분의 자리에만 두는것이기떄문에 공격은 x인상태로 설정
+                clone3.GetComponent<TowerWeapon>().disable = true;
+                clone3.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+            break;
+        }
+
         OnBuffAllBuffTowers();
-        // 배치 다 하고나면 임시 타워 삭제
         Destroy(tempPrefab);
     }
 
@@ -139,22 +181,36 @@ public class TowerSpawner : MonoBehaviour
         isOnTowerButton = false;
         // 타워가 지워져있음으로 설정
         tile.IsBuildTower = true;
-        // 타워 건설에 필요한 골드만큼 감소
-        // playerGold.CurrentGold -= towerBuildGold;
-        playerGold.CurrentGold -= towerTemplate[towerType].weapon[0].cost;
         // 선택한 타일 위치에 타워 건설
         Vector3 position = tileTransform.position + Vector3.back;
-        // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
-        GameObject clone = Instantiate(towerTemplate[towerType].towerPrefab, position, Quaternion.identity);
-        synergy.chkSynergy(towerTemplate[towerType].weapon[0].towerSynergy);
-        // 타워 무기에 enemySpanwer 정보 전달
-        clone.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+        switch(towertier){
+            case 1:
+                playerGold.CurrentGold -= towerTemplate_tier1[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone1 = Instantiate(towerTemplate_tier1[towerType].towerPrefab, position, Quaternion.identity);
+                clone1.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+                synergy.chkSynergy(towerTemplate_tier1[towerType].weapon[0].towerSynergy);
+            break;
+            case 2:
+                playerGold.CurrentGold -= towerTemplate_tier2[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone2 = Instantiate(towerTemplate_tier2[towerType].towerPrefab, position, Quaternion.identity);
+                clone2.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+                synergy.chkSynergy(towerTemplate_tier2[towerType].weapon[0].towerSynergy);
+            break;
+            case 3:
+                playerGold.CurrentGold -= towerTemplate_tier3[towerType].weapon[0].cost;
+                // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
+                GameObject clone3 = Instantiate(towerTemplate_tier3[towerType].towerPrefab, position, Quaternion.identity);
+                clone3.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
+                synergy.chkSynergy(towerTemplate_tier3[towerType].weapon[0].towerSynergy);
+            break;
+        }
 
         // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
         OnBuffAllBuffTowers();
-        // 배치 다 하고나면 임시 타워 삭제
-       Destroy(tempPrefab);
+        Destroy(tempPrefab);
     }
 
     public void cancelbuttonClicked(){

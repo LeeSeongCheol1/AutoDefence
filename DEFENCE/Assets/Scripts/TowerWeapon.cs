@@ -74,7 +74,7 @@ public class TowerWeapon : MonoBehaviour
     public float synergyRate;
     public float synergyRange;
     public float synergySlow;
-    
+    private Synergy syn;
     
     private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
     private string towersynergy => towerTemplate.weapon[level].towerSynergy; 
@@ -395,16 +395,16 @@ public class TowerWeapon : MonoBehaviour
         for(int i = 0; i<2;i++){
             if(towerarr[y[i]].GetComponent<TowerWeapon>().disable == false){
                 towerSpawner.towernum--;
+                GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
+                synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
             }
             towerarr[y[i]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
             Destroy(towerarr[y[i]]);
             towerSpawner.UpdateTowerText();
         }
-
         level++;
         // 타워 외형 변경(Sprite)
         spriteRenderer.sprite = towerTemplate.weapon[level].sprite;
-
         // 무기 속정이 레이저라면
         if(weaponType == WeaponType.Laser)
         {
@@ -416,7 +416,7 @@ public class TowerWeapon : MonoBehaviour
         // 타워가 업그레이드 될 때 모든 버프 타워의 버프 효과 갱신
         // 현재 타워가 버프 타워윈 경우, 현재 타워가 공격 타워인 경우
         towerSpawner.OnBuffAllBuffTowers();
-
+    
         return true; 
     }
 

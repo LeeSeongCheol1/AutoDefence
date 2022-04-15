@@ -11,6 +11,8 @@ public class WaveSystem : MonoBehaviour
     [SerializeField]
     private PlayerGold playerGold;
     [SerializeField]
+    private GameOver gameOver;
+    [SerializeField]
     private Reload reload;
 
     int addGold = 0;
@@ -40,6 +42,13 @@ public class WaveSystem : MonoBehaviour
                 addGold += 3;
             }
             playerGold.CurrentGold += (5 + addGold);
+        }
+
+        if(currentWaveIndex == 10){
+            GameObject boss = GameObject.FindGameObjectWithTag("Boss");
+            if(boss != null){
+                gameOver.gameOver();
+            }
         }
     }
 }

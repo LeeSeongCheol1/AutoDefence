@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Assasin_tier3
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 3893867703925399502, guid: 02cdcac883460864fabbc4aa14c8a0cd,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Assasin_tier3_lv1
+    towerSynergy: Assasin
+    sprite: {fileID: 21300000, guid: 53d715f5157d7684ebd6c0278afd401c, type: 3}
+    critical: 20
+    minDamage: 1
+    maxDamage: 83
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 3
+    sell: 3
+  - towerIdentity: Assasin_tier3_lv2
+    towerSynergy: Assasin
+    sprite: {fileID: 21300000, guid: 14fb9c428fd9e5245967d7ea035428fc, type: 3}
+    critical: 40
+    minDamage: 1
+    maxDamage: 135
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 0
+    sell: 6
+  - towerIdentity: Assasin_tier3_lv3
+    towerSynergy: Assasin
+    sprite: {fileID: 21300000, guid: b152947d33b47c447af9fd09de415fcf, type: 3}
+    critical: 80
+    minDamage: 1
+    maxDamage: 234
+    slow: 0
+    buff: 0
+    rate: 0
+    range: 2
+    cost: 0
+    sell: 18

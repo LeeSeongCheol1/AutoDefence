@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Glacia_tier3
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 2731821640062892006, guid: 0ef890e4658806a49aa62ae4e35e0f4d,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Glacia_tier3_lv1
+    towerSynergy: Glacia
+    sprite: {fileID: 21300000, guid: fbc7916344e71a148b56ff7ca2b84bae, type: 3}
+    critical: 0
+    minDamage: 40
+    maxDamage: 43
+    slow: 0
+    buff: 0
+    rate: 0.6
+    range: 2
+    cost: 3
+    sell: 3
+  - towerIdentity: Glacia_tier3_lv2
+    towerSynergy: Glacia
+    sprite: {fileID: 21300000, guid: 68735bb4e706a9a4890ec87066b70a55, type: 3}
+    critical: 0
+    minDamage: 130
+    maxDamage: 133
+    slow: 0
+    buff: 0
+    rate: 0.5
+    range: 3
+    cost: 0
+    sell: 6
+  - towerIdentity: Glacia_tier3_lv3
+    towerSynergy: Glacia
+    sprite: {fileID: 21300000, guid: 106277987c317324e8f04fb82a3bb266, type: 3}
+    critical: 0
+    minDamage: 252
+    maxDamage: 255
+    slow: 0
+    buff: 0
+    rate: 0.35
+    range: 5
+    cost: 0
+    sell: 18

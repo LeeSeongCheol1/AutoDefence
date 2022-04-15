@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Hunter_tier2
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 5348044327624621853, guid: 9784e34972b77a345aa8144ee080799d,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Hunter_tier2_lv1
+    towerSynergy: Hunter
+    sprite: {fileID: 21300000, guid: f0cd7d45f0c83614380ff4d819baf0fa, type: 3}
+    critical: 7
+    minDamage: 18
+    maxDamage: 20
+    slow: 0
+    buff: 0
+    rate: 0.27
+    range: 2
+    cost: 2
+    sell: 2
+  - towerIdentity: Hunter_tier2_lv2
+    towerSynergy: Hunter
+    sprite: {fileID: 21300000, guid: 06327b3de214832468fd4b09ef3375b9, type: 3}
+    critical: 10
+    minDamage: 49
+    maxDamage: 51
+    slow: 0
+    buff: 0
+    rate: 0.17
+    range: 2
+    cost: 0
+    sell: 5
+  - towerIdentity: Hunter_tier2_lv3
+    towerSynergy: Hunter
+    sprite: {fileID: 21300000, guid: d4a18cb9eafb63c4cb1d11edf15327da, type: 3}
+    critical: 15
+    minDamage: 99
+    maxDamage: 101
+    slow: 0
+    buff: 0
+    rate: 0.08
+    range: 2
+    cost: 0
+    sell: 12

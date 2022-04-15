@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 496d697c158752249a0710303c644c89, type: 3}
+  m_Name: Archer_tier2
+  m_EditorClassIdentifier: 
+  towerPrefab: {fileID: 2426213461295395913, guid: 1eb85aa2728cad641843ad4385c2a450,
+    type: 3}
+  followTowerPrefab: {fileID: 0}
+  weapon:
+  - towerIdentity: Archer_tier2_lv1
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: dc38a4bbe1517ec46ac7eaa7eb8fb792, type: 3}
+    critical: 14
+    minDamage: 45
+    maxDamage: 48
+    slow: 0
+    buff: 0
+    rate: 0.57
+    range: 3
+    cost: 2
+    sell: 2
+  - towerIdentity: Archer_tier2_lv2
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: 037e37ad1d9295d42bd6b122e4cf6385, type: 3}
+    critical: 17
+    minDamage: 124
+    maxDamage: 127
+    slow: 0
+    buff: 0
+    rate: 0.43
+    range: 3
+    cost: 0
+    sell: 5
+  - towerIdentity: Archer_tier2_lv3
+    towerSynergy: Archer
+    sprite: {fileID: 21300000, guid: fe8bce4f93a9d8c4c8a7ccbeff4cf7f8, type: 3}
+    critical: 24
+    minDamage: 211
+    maxDamage: 214
+    slow: 0
+    buff: 0
+    rate: 0.38
+    range: 3
+    cost: 0
+    sell: 12
