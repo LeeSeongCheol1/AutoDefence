@@ -31,7 +31,7 @@ public class Synergy : MonoBehaviour
             case "Archer":
                 synergy[1]++;
                 if(synergy[1] == 2){
-                    synergyBuff[3] += 3;
+                    synergyBuff[3] += 30;
                 }else if(synergy[1] == 4){
                     synergyBuff[1] += 30;
                 }
@@ -39,7 +39,7 @@ public class Synergy : MonoBehaviour
             case "Hunter":
                 synergy[2]++;
                 if(synergy[2] == 2){
-                    synergyBuff[3] += 3;
+                    synergyBuff[3] += 30;
                 }else if(synergy[2] == 4){
                     synergyBuff[0] += 100;
                 }
@@ -47,7 +47,7 @@ public class Synergy : MonoBehaviour
             case "Warrior":
                 synergy[3]++;
                 if(synergy[3] == 2){
-                    synergyBuff[0] += 100;
+                    synergyBuff[3] += 30;
                 }else if(synergy[3] == 4){
                     synergyBuff[4] += 100;
                 }
@@ -71,7 +71,7 @@ public class Synergy : MonoBehaviour
             case "Pirate":
                 synergy[6]++;
                 if(synergy[6] == 2){
-                    synergyBuff[6] += 30;
+                    synergyBuff[3] += 30;
                 }else if(synergy[6] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -79,7 +79,7 @@ public class Synergy : MonoBehaviour
             case "Priest":
                 synergy[7]++;
                 if(synergy[7] == 2){
-                    synergyBuff[7] += 30;
+                    synergyBuff[3] += 30;
                 }else if(synergy[7] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -188,7 +188,7 @@ public class Synergy : MonoBehaviour
             case "Pirate":
                 synergy[6]--;
                 if(synergy[6] == 1){
-                    synergyBuff[6] -= 30;
+                    synergyBuff[3] -= 30;
                 }else if(synergy[6] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -196,7 +196,7 @@ public class Synergy : MonoBehaviour
             case "Priest":
                 synergy[7]--;
                 if(synergy[7] == 1){
-                    synergyBuff[7] -= 30;
+                    synergyBuff[3] -= 30;
                 }else if(synergy[7] == 3){
                     synergyBuff[3] -= 100;
                 }

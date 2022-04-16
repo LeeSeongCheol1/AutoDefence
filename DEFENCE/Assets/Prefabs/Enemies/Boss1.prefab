@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -7417936504634937059}
   - component: {fileID: 7738886212675679843}
   m_Layer: 8
-  m_Name: Enemy05
+  m_Name: Boss1
   m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -140,4 +140,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a756993adf192ae4492ac6ddd992cc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 100
+  maxHP: 7200
