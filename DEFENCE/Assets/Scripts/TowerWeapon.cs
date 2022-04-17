@@ -15,7 +15,7 @@ public class TowerWeapon : MonoBehaviour
     // Inspector View의 표시되는 변수들을 용도별로 구분하기 위한 어트리뷰트
     [Header("Commons")]
     [SerializeField]
-    private TowerTemplate towerTemplate;
+    public TowerTemplate towerTemplate;
     [SerializeField]
     private Transform spawnPoint;
     [SerializeField]
@@ -77,7 +77,7 @@ public class TowerWeapon : MonoBehaviour
     private Synergy syn;
     
     private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
-    private string towersynergy => towerTemplate.weapon[level].towerSynergy; 
+    public string towersynergy => towerTemplate.weapon[level].towerSynergy; 
     public GameObject[] towerarr;
     private Vector3 vec;
     public Vector3 vec1;

@@ -18,6 +18,8 @@ public class ObjectDetector : MonoBehaviour
     GameObject cancelPrefab;
     [SerializeField]
     private Reload reload;
+    [SerializeField]
+    private Synergy synergy;
 
     private Camera mainCamera;
     private Ray ray;
@@ -77,11 +79,15 @@ public class ObjectDetector : MonoBehaviour
 
                         if(weapon1.disable == true){
                             weapon2.disable = true;
+                            synergy.removeSynergy(weapon2.towersynergy);
                             weapon1.disable = false;
+                            synergy.chkSynergy(weapon1.towersynergy);
                             weapon1.ChangeState(WeaponState.SearchTarget);
                         }else if(weapon2.disable == true){
                             weapon1.disable = true;
+                            synergy.removeSynergy(weapon1.towersynergy);
                             weapon2.disable = false;
+                            synergy.chkSynergy(weapon2.towersynergy);
                             weapon2.ChangeState(WeaponState.SearchTarget);
                         }
 

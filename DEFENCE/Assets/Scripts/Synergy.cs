@@ -39,7 +39,7 @@ public class Synergy : MonoBehaviour
             case "Hunter":
                 synergy[2]++;
                 if(synergy[2] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[2] -= 0.1f;
                 }else if(synergy[2] == 4){
                     synergyBuff[0] += 100;
                 }
@@ -47,7 +47,7 @@ public class Synergy : MonoBehaviour
             case "Warrior":
                 synergy[3]++;
                 if(synergy[3] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[0] += 50;
                 }else if(synergy[3] == 4){
                     synergyBuff[4] += 100;
                 }
@@ -156,7 +156,7 @@ public class Synergy : MonoBehaviour
             case "Hunter":
                 synergy[2]--;
                 if(synergy[2] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[2] += 0.1f;
                 }else if(synergy[2] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -164,7 +164,7 @@ public class Synergy : MonoBehaviour
             case "Warrior":
                 synergy[3]--;
                 if(synergy[3] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[0] -= 50;
                 }else if(synergy[3] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -236,7 +236,7 @@ public class Synergy : MonoBehaviour
             }
         }
         
-        totalSynergy.text = "\n받고있는 효과 // \n공격력 : "+synergyBuff[0]+" 크리티컬 확률 : "+synergyBuff[1]+" 공격 속도 : "+synergyBuff[2]+" 공격 범위 : "+synergyBuff[3];
+        totalSynergy.text = "\n받고있는 효과 // \n공격력 : "+synergyBuff[0]+" 크리티컬 확률 : "+synergyBuff[1]+"\n공격 속도 : "+synergyBuff[2]+" 공격 범위 : "+synergyBuff[3];
         synergyText.text = bufftext;
 
         GameObject[] towers = GameObject.FindGameObjectsWithTag("Tower");

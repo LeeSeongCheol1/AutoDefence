@@ -1680,8 +1680,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -51, y: 30}
-  m_SizeDelta: {x: 240, y: 140}
+  m_AnchoredPosition: {x: -36, y: 37}
+  m_SizeDelta: {x: 203.1611, y: 144.99106}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &204537681
 MonoBehaviour:
@@ -4769,7 +4769,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37, y: -117}
+  m_AnchoredPosition: {x: -36, y: -157}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &822483771
@@ -4844,7 +4844,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 250, y: 240}
+  m_CellSize: {x: 200, y: 220}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 2
@@ -6458,8 +6458,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -315, y: 30}
-  m_SizeDelta: {x: 240, y: 140}
+  m_AnchoredPosition: {x: -259.5, y: 37}
+  m_SizeDelta: {x: 203.1611, y: 144.99106}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1151387908
 MonoBehaviour:
@@ -9939,7 +9939,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b333e1575738b494c982754467582c98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LimitTime: 1
+  LimitTime: 15
   text_Timer: {fileID: 1458868222}
 --- !u!61 &1604392729
 BoxCollider2D:
@@ -11768,6 +11768,7 @@ MonoBehaviour:
   cancelButton: {fileID: 1571603344}
   cancelPrefab: {fileID: 0}
   reload: {fileID: 484346192}
+  synergy: {fileID: 2049108718}
   moveStatus: 0
 --- !u!4 &1812662052
 Transform:
@@ -13116,8 +13117,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 682, y: 120}
-  m_SizeDelta: {x: 680.282, y: 166.40048}
+  m_AnchoredPosition: {x: 588.1, y: 120}
+  m_SizeDelta: {x: 492.51794, y: 166.40048}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2000719881
 MonoBehaviour:
@@ -13268,103 +13269,103 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 4609526704512384673, guid: 6cc8cefc9184b35488edeaf7a6c2197e, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 4609526704512384673, guid: 49c423f8236de60439f7504669031ffd, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 4609526704512384673, guid: ae78ae70ae6af8c45abeb50a95514cb3, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 4609526704512384673, guid: ae0a57d272480104c8daae4c76bed719, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 946864673548513174, guid: 979bdd7286a81ca4c954f95c3c86e3d1, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 5771380807940668846, guid: b3269c66f02573a44bf02a5006380f5f, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 10
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 8799547441892815761, guid: 3a1f3cae5050413449cdab59428d0c53, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 9035500651315990875, guid: ebf49ca95dce6c94c82360d601ed7403, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 9053888245395821307, guid: b3eda15cfa0c8b6469c120d70f36f1ce, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 2479964739054174076, guid: c46a6d1af3ef382479ac32af99c27301, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 1814686646322813882, guid: 5d59d5722ff870f4caeb1e27c5979eb1, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 6616584420193904253, guid: 7e36d76fa13ab614cb6bf6cc5c367746, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 7379674082722037833, guid: b9fb394b8e6f7a040be326f7460cf778, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 5122509883360605430, guid: 1e9cac4b6ccab2b4f975135f929d13b5, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 3607702280332580116, guid: 7c946fee88961574bac4a68464e07d4c, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 6842044879652021953, guid: 4154da174d8a4a146a5f2bbc66996fe0, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 1123221644600115454, guid: 8f4a5d502a01ab64fbb012295308c6cf, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 8061865054787662026, guid: b66eed9c891dc6e49a9211f2c7b6e5c5, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 5700284366923066392, guid: 9c68ce0cd5784ec46ad6e1f5d6c3394a, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 3515247908303275343, guid: 04dde5bc4a5290b419b9c81a91f2fc75, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 5759989271906821155, guid: a34c0eae4588eb742b64513fe94ada97, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 2493229195101569424, guid: a226ab619c0b23c499c563d488d44aaf, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 2415278297661874781, guid: 64275b08bd147dd40a8900450e52dea8, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 3658531834513340247, guid: 2023d658fce9ac84ba578b8ef90b696a, type: 3}
   - spawnTime: 0.5
-    maxEnemyCount: 25
+    maxEnemyCount: 20
     enemyPrefabs:
     - {fileID: 7955425235697944632, guid: 0ed790da13683ea4c8dfd7741f5aecdc, type: 3}
   enemySpawner: {fileID: 720850691}
