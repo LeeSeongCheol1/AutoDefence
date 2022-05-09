@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class ObjectDetector : MonoBehaviour
 {
     [SerializeField]
-    private TowerSpawner towerSpawner;
+    public TowerSpawner towerSpawner;
     [SerializeField]
     private TowerDataViewer towerDataViewer;
     [SerializeField]
@@ -15,11 +15,11 @@ public class ObjectDetector : MonoBehaviour
     [SerializeField]
     private Button cancelButton;
     [SerializeField]
-    GameObject cancelPrefab;
-    [SerializeField]
-    private Reload reload;
+    public Reload reload;
     [SerializeField]
     private Synergy synergy;
+    [SerializeField]
+    public Inventory inventory;
 
     private Camera mainCamera;
     private Ray ray;
@@ -30,6 +30,8 @@ public class ObjectDetector : MonoBehaviour
 
     GameObject gameObject1;
     GameObject gameObject2;
+    GameObject[] cancelObj;
+    Tile tile;
 
     private void Awake()
     {
@@ -42,24 +44,52 @@ public class ObjectDetector : MonoBehaviour
         // 마우스가 UI에 머물러 있을 때는 아래 코드 실행 x
         if (Input.GetMouseButtonDown(0))
         {
+            systemTextViewer.PrintText(SystemType.zero);
             if(moveStatus == false){
                 ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-
                 if(Physics.Raycast(ray, out hit, Mathf.Infinity))
                 {
                     hitTransform = hit.transform;
                     if (hit.transform.CompareTag("Tower"))
                     {
-                        towerDataViewer.OnPanel(hit.transform);
+                        if(inventory.inventoryClicked){
+                            TowerWeapon tower = hit.transform.GetComponent<TowerWeapon>();
+                            if(tower.itemnum>2){
+                                systemTextViewer.PrintText(SystemType.ItemMax);
+                                return;
+                            }
+                                tower.equipItems(inventory.items[inventory.clickedInventory]);
+                                Destroy(inventory.tempPrefab);
+                                inventory.inventoryClicked = false;
+                                inventory.arrangeItems(inventory.clickedInventory);
+                        }else{
+                            if(towerSpawner.isOnTowerButton == true)
+                            {
+                                systemTextViewer.PrintText(SystemType.Build);
+                                return;
+                            }
+                            towerDataViewer.OnPanel(hit.transform);
+                        }
                     }else if(hit.transform.CompareTag("Cancel")){
+                        if(inventory.inventoryClicked){
+                            Destroy(inventory.tempPrefab);
+                            inventory.inventoryClicked = false;
+                        }else{
                         Destroy(towerSpawner.tempPrefab);
                         towerSpawner.isOnTowerButton = false;
                         reload.buttons[reload.clickednum].interactable = true;
+                        reload.btnClicked = false;
+                        }
                     }else if(hit.transform.CompareTag("ExtraTile")){
+                        reload.btnClicked = false;
                         towerSpawner.spawnExtraTower(hit.transform);
                     }else if (hit.transform.CompareTag("Tile"))
                     {
+                        reload.btnClicked = false;
                         towerSpawner.SpawnTower(hit.transform);
+                    }else if(hit.transform.CompareTag("Item")){
+                        inventory.getItem(hit.transform);
+                        Destroy(hit.transform.gameObject);
                     }
                 }
             }else if(moveStatus == true)
@@ -105,27 +135,38 @@ public class ObjectDetector : MonoBehaviour
                         gameObject1.tag = "Tower";
                         TowerWeapon weapon1 = gameObject1.GetComponent<TowerWeapon>();
                         weapon1.EndMoveStatus();
+                        if(weapon1.disable == false){
+                            towerSpawner.towernum--;
+                            synergy.removeSynergy(weapon1.towersynergy);
+                        }
                         weapon1.ownerTile.IsBuildTower = false;
-                        weapon1.ownerTile = hit.transform.GetComponent<Tile>();
-                        weapon1.ownerTile.IsBuildTower = true;
                         weapon1.disable = true;
                     }else if (hit.transform.CompareTag("Tile"))
                     {
-                        if(towerSpawner.towernum >= towerSpawner.maxnum){
+                        gameObject1 = GameObject.FindGameObjectWithTag("moveTower1");
+                        TowerWeapon weapon1 = gameObject1.GetComponent<TowerWeapon>();
+                        tile = hit.transform.GetComponent<Tile>();
+                        if(tile.IsBuildTower == true){
+                                systemTextViewer.PrintText(SystemType.TowerMax);
+                                return;
+                            }
+                        if(towerSpawner.towernum >= towerSpawner.maxnum && weapon1.disable == true){
                             systemTextViewer.PrintText(SystemType.TowerMax);
                             return;
                         }
                         gameObject1 = GameObject.FindGameObjectWithTag("moveTower1");
                         gameObject1.transform.position = hit.transform.position + Vector3.back; 
-                        gameObject1.tag = "Tower";
-                        TowerWeapon weapon1 = gameObject1.GetComponent<TowerWeapon>();
-                        weapon1.EndMoveStatus();
                         weapon1.ownerTile.IsBuildTower = false;
-                        weapon1.ownerTile = hit.transform.GetComponent<Tile>();
+                        gameObject1.tag = "Tower";
+                        weapon1.EndMoveStatus();
+                        weapon1.ownerTile = tile;
                         weapon1.ownerTile.IsBuildTower = true;
                         if(weapon1.disable == true){
                             weapon1.disable = false;
                             weapon1.ChangeState(WeaponState.SearchTarget);
+                            synergy.chkSynergy(weapon1.towersynergy);
+                            towerSpawner.towernum++;
+                            towerSpawner.UpdateTowerText();
                         }
                     }
                 }
@@ -140,10 +181,12 @@ public class ObjectDetector : MonoBehaviour
                 cancelButton.gameObject.SetActive(false);
             }
         }
+        towerSpawner.UpdateTowerText();
     }
 
     public void cancelbuttonClicked(){
         towerDataViewer.OffPanel();
         cancelButton.gameObject.SetActive(false);
+        moveStatus = false;
     }
 }

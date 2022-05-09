@@ -132,7 +132,7 @@ MonoBehaviour:
   towerTemplate: {fileID: 11400000, guid: c461ff8e1e18d484ca7ef1b3053b116d, type: 2}
   spawnPoint: {fileID: 8365385846847845213}
   weaponType: 0
-  projectilePrefab: {fileID: 6583615643002864854, guid: f6c456a5f3e5bbe42bdc28645c0af3ca,
+  projectilePrefab: {fileID: 4115835477179181892, guid: 86ba2a8b0976d0f4d9672d34d0931eb6,
     type: 3}
   lineRenderer: {fileID: 0}
   hitEffect: {fileID: 0}
@@ -148,6 +148,9 @@ MonoBehaviour:
   towerarr: []
   vec1: {x: 0, y: 0, z: 0}
   vec2: {x: 0, y: 0, z: 0}
+  items: 000000000000000000000000
+  itemnum: 0
+  towertype: 
 --- !u!65 &4252661188480905998
 BoxCollider:
   m_ObjectHideFlags: 0

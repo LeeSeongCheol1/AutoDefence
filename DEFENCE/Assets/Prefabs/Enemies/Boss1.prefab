@@ -112,6 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e6943e94c5ee447ab4f61c61b877c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  item:
+  - {fileID: 5407183265267716423, guid: 822d53494d58485458b0309129e27d00, type: 3}
+  - {fileID: 1051351372883555982, guid: 17682661967b1ec41841bde0b5a17627, type: 3}
+  - {fileID: 2710169350940766078, guid: 2c67e488264738343820520f142e3cff, type: 3}
 --- !u!58 &-7417936504634937059
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -140,4 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a756993adf192ae4492ac6ddd992cc1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHP: 7200
+  maxHP: 6700
+  currentHP: 0
+  isDie: 0
+  enemy: {fileID: 0}

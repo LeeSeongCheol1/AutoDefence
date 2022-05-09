@@ -32,6 +32,12 @@ public class Reload : MonoBehaviour
     private TextMeshProUGUI[] synergyTexts;
     [SerializeField]
     public Button[] buttons;
+    [SerializeField]
+    private ObjectDetector detector;
+    [SerializeField]
+    private Image[] tierImages;
+    [SerializeField]
+    private Sprite[] tiers;
 
     GameObject PlayerGold;
     int ranum1 = 0;
@@ -43,8 +49,11 @@ public class Reload : MonoBehaviour
 
     int[] tier = new int[8];
     int[] type = new int[8];
-    public int clickednum = -1;
-
+    public int clickednum = 5;
+    public bool btnClicked = false;
+    private int tempClicked;
+    public int[] btnStatus;
+    Color c;
     private void Awake()
     {
         PlayerGold = GameObject.Find("PlayerStats");
@@ -109,10 +118,24 @@ public class Reload : MonoBehaviour
         }
             
     }
+
+    public void checkPurchase(){
+        for(int i =0; i<5;i++){
+            if(btnStatus[i] == 1){
+                buttons[i].interactable = false;
+            }else{
+                buttons[i].interactable = true;
+            }
+        }
+    }
+
     public void Reloading()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 5; i++)
         {
+            clickednum = 5;
+            btnClicked = false;
+            btnStatus[i] = 0;
             buttons[i].interactable = true;
             reloadUpdate();
             type[i] = Random.Range(0, 8);
@@ -128,67 +151,82 @@ public class Reload : MonoBehaviour
                 tier[i] = 3;
             }
 
-
             switch(tier[i]){
                 case 1:
+                tierImages[i].sprite = tiers[0]; 
                 synergyTexts[i].text = towerTemplate_tier1[type[i]].weapon[0].towerSynergy;
                 texts[i].text = "$" + towerTemplate_tier1[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier1[type[i]];    
                 break;
                 case 2:
+                tierImages[i].sprite = tiers[1]; 
                 synergyTexts[i].text = towerTemplate_tier2[type[i]].weapon[0].towerSynergy;
                 texts[i].text = "$" + towerTemplate_tier2[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier2[type[i]];    
                 break;
                 case 3:
+                tierImages[i].sprite = tiers[2]; 
                 synergyTexts[i].text = towerTemplate_tier3[type[i]].weapon[0].towerSynergy;
                 texts[i].text = "$" + towerTemplate_tier3[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier3[type[i]];    
                 break;
             }
         }
+        btnStatus[5] = 0;
     }
 
     public void btn1Clicked()
     {
+        btnClicked  = true;
         towerSpawner.ReadyToSpawnTower(tier[0], type[0]);
         buttons[0].interactable = false;
+        systemTextViewer.PrintText(SystemType.towerClicked);
         clickednum = 0;
+        detector.cancelbuttonClicked();
+        checkPurchase();
     }
 
     public void btn2Clicked()
     {
-        
+        btnClicked  = true;
         towerSpawner.ReadyToSpawnTower(tier[1], type[1]);
         buttons[1].interactable = false;
+        systemTextViewer.PrintText(SystemType.towerClicked);
         clickednum = 1;
+        detector.cancelbuttonClicked();
+        checkPurchase();
     }
 
     public void btn3Clicked()
     {
+        btnClicked  = true;
         towerSpawner.ReadyToSpawnTower(tier[2], type[2]);
         buttons[2].interactable = false;
+        systemTextViewer.PrintText(SystemType.towerClicked);
         clickednum = 2;
+        detector.cancelbuttonClicked();
+        checkPurchase();
     }
 
     public void btn4Clicked()
     {
+        btnClicked  = true;
         towerSpawner.ReadyToSpawnTower(tier[3], type[3]);
         buttons[3].interactable = false;
+        systemTextViewer.PrintText(SystemType.towerClicked);
         clickednum = 3;
+        detector.cancelbuttonClicked();
+        checkPurchase();
     }
 
     public void btn5Clicked()
     {
+        btnClicked  = true;
         towerSpawner.ReadyToSpawnTower(tier[4], type[4]);
         buttons[4].interactable = false;
+        systemTextViewer.PrintText(SystemType.towerClicked);
         clickednum = 4;
-    }
-
-    public void btn6Clicked()
-    {
-        towerSpawner.ReadyToSpawnTower(tier[5], type[5]);
-        buttons[5].interactable = false;
-        clickednum = 5;
+        detector.cancelbuttonClicked();
+        checkPurchase();
     }
 }

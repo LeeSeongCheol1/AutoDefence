@@ -55,6 +55,16 @@ public class Enemy : MonoBehaviour
             Vector3 direction = (wayPoints[currentIndex].position - transform.position).normalized;
             movement2D.MoveTo(direction);
     }
+    
+    public void Stunned(int time){
+        StartCoroutine("Stun",time);
+    }
+
+    private IEnumerator Stun(int time){
+        movement2D.MoveSpeed = 0;
+        yield return new WaitForSeconds(time);
+        movement2D.ResetMoveSpeed();
+    }
 
     public void OnDie(EnemyDestroyType type)
     {

@@ -36,6 +36,8 @@ public class TowerDataViewer : MonoBehaviour
     private BossSpawner bossSpawner;
     [SerializeField]
     private Button cancelButton;
+    [SerializeField]
+    GameObject cancelBtn;
 
     private TowerWeapon currentTower;
 
@@ -53,7 +55,7 @@ public class TowerDataViewer : MonoBehaviour
         // 타워 정보 패널 On
         gameObject.SetActive(true);
         // 타워 오브젝트 주변에 공격 범위 On
-        towerAttackRange.OnAttackRange(currentTower.transform.position, currentTower.Range);
+        towerAttackRange.OnAttackRange(currentTower.transform.position, (currentTower.Range+currentTower.synergyRange));
         cancelButton.gameObject.SetActive(true);
     }
 
@@ -87,8 +89,8 @@ public class TowerDataViewer : MonoBehaviour
 
         imageTower.sprite = currentTower.TowerSprite;
         // textDamege.text = "Damage : " + currentTower.Damage;
-        textRate.text = "Rate : " + currentTower.Rate;
-        textRange.text = "Range : " + currentTower.Range;
+        textRate.text = "Rate : " + currentTower.Rate+" "+"<color=red>"+currentTower.synergyRate.ToString("F1")+"</color>";
+        textRange.text = "Range : " + currentTower.Range+" + "+"<color=red>"+currentTower.synergyRange.ToString("F1")+"</color>";
         textLevel.text = "Level : " + currentTower.Level;
         textSellCost.text = currentTower.SellCost.ToString();
 
@@ -114,6 +116,10 @@ public class TowerDataViewer : MonoBehaviour
             bossButton.interactable = true;
             moveButton.interactable = true;
         }
+
+        if(currentTower.disable == true){
+            bossButton.interactable = false;    
+        }
     }
 
     public void OnClickEventTowerUpgrade()
@@ -131,9 +137,9 @@ public class TowerDataViewer : MonoBehaviour
         else
         {
             systemTextViewer.PrintText(SystemType.Money);
+            return;
         }
 
-        
         OffPanel();
         cancelButton.gameObject.SetActive(false);
     }
@@ -151,7 +157,6 @@ public class TowerDataViewer : MonoBehaviour
     }
 
     public void OnClickMoveTower(){
-        currentTower.MoveTower();
-        OffPanel();
+        currentTower.MoveTower();   
     }
 }

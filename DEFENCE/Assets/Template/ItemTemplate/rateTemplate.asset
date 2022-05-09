@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fe56a00c2e3c9b42838d9302740f2e9, type: 3}
+  m_Name: rateTemplate
+  m_EditorClassIdentifier: 
+  itemType: 1
+  itemImage: {fileID: 21300000, guid: 419d9254c98c12547af1c54ca22a3b23, type: 3}
+  itemPrefab: {fileID: 1051351372883555982, guid: 17682661967b1ec41841bde0b5a17627,
+    type: 3}
+  Atk: 0
+  Rate: 0
+  Range: 1

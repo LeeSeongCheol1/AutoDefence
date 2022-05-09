@@ -25,7 +25,7 @@ MonoBehaviour:
     slow: 0
     buff: 0
     rate: 0.45
-    range: 0
+    range: 2
     cost: 2
     sell: 2
   - towerIdentity: Warrior_tier2_lv2

@@ -15,7 +15,7 @@ public class TowerWeapon : MonoBehaviour
     // Inspector View의 표시되는 변수들을 용도별로 구분하기 위한 어트리뷰트
     [Header("Commons")]
     [SerializeField]
-    public TowerTemplate towerTemplate;
+    private TowerTemplate towerTemplate;
     [SerializeField]
     private Transform spawnPoint;
     [SerializeField]
@@ -24,13 +24,6 @@ public class TowerWeapon : MonoBehaviour
     [Header("Cannon")]
     [SerializeField]
     private GameObject projectilePrefab;
-
-    /*[SerializeField]
-    private float attackRate = 0.5f;
-    [SerializeField]
-    private float attackRange = 2.0f;
-    [SerializeField]
-    private int attackDamage = 1;*/
 
     [Header("Laser")]
     [SerializeField]
@@ -82,6 +75,10 @@ public class TowerWeapon : MonoBehaviour
     private Vector3 vec;
     public Vector3 vec1;
     public Vector3 vec2;
+
+    public int[] items = new int[3]; 
+    public int itemnum = 0;
+    public string towertype;
 
     /*
     public float Damage => attackDamage;
@@ -323,14 +320,24 @@ public class TowerWeapon : MonoBehaviour
         else {
             damage = damage + (int)AddedDamage;
         }
-        clone.GetComponent<Projectile>().Setup(attackTarget, damage,cri);
+        
+        switch(towertype){
+            case "Hunter":
+                clone.GetComponent<hunterProjectile>().Setup(attackTarget, damage,cri);
+                break;
+            case "Warrior":
+                clone.GetComponent<warriorProjectile>().Setup(attackTarget, damage,cri);
+                break;
+            default:
+                clone.GetComponent<Projectile>().Setup(attackTarget, damage,cri);
+                break;
+        }
     }
 
     private bool randomOX(float criticalRate)
     {
-        int percent = Random.Range(1, 101);
+        int percent = Random.Range(0, 101);
         int Rate = (int)(criticalRate+synergyCritical);
-        Debug.Log("크리티컬 확률 : "+Rate);
         if(percent <= Rate)
         {   
             return true;
@@ -440,10 +447,12 @@ public class TowerWeapon : MonoBehaviour
 
     public void Sell()
     {
-        towerSpawner.towernum--;
-        towerSpawner.UpdateTowerText();
-        GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
-        synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
+        if(disable == false){
+            towerSpawner.towernum--;
+            towerSpawner.UpdateTowerText();
+            GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
+            synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
+        }
         // 골드 증가
         playerGold.CurrentGold += towerTemplate.weapon[level].sell;
         // 현재 타일에 다시 건설 가능하게 설정
@@ -491,8 +500,30 @@ public class TowerWeapon : MonoBehaviour
     }
 
     public void EndMoveStatus(){
+        gameObject.tag = "Tower";
         objectDetector.moveStatus = false;
         systemTextViewer.MovePrint(false);
         StopCoroutine("MoveTowerCancel");
+    }
+
+    public void equipItems(int type){
+        switch(type){
+            case 0: 
+                items[itemnum] = type;
+                synergyDamage += 50;
+                itemnum++;
+                break;
+            case 1:
+                items[itemnum] = type;
+                synergyRate -= 0.15f;
+                itemnum++;
+                break;
+            case 2:
+                items[itemnum] = type;
+                synergyRange += 1;
+                itemnum++;
+                break;
+        }
+        systemTextViewer.PrintText(SystemType.zero);
     }
 }

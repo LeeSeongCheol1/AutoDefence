@@ -5,10 +5,10 @@ using UnityEngine;
 public class BossHP : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP;
-    private float currentHP;
-    private bool isDie = false;
-    private Boss enemy;
+    public float maxHP;
+    public float currentHP;
+    public bool isDie = false;
+    public Boss enemy;
     private SpriteRenderer spriteRenderer;
 
     public float MaxHP => maxHP;
@@ -37,6 +37,7 @@ public class BossHP : MonoBehaviour
             enemy.OnDie(BossDestroyType.Kill);
         }
     }
+    
 
     private IEnumerator HitAlphaAnimation()
     {

@@ -6,11 +6,14 @@ public enum BossDestroyType { Kill = 0,Arrive}
 
 public class Boss : MonoBehaviour
 {
+    [SerializeField]
+    private GameObject[] item;
     private int wayPointCount;
     private Transform[] wayPoints;
-    private int currentIndex = 0;
+    private int currentIndex;
     private Movement2D movement2D;
     private BossSpawner enemySpawner;
+    private int itemtype;
 
     public void Setup(BossSpawner enemySpawner,Transform[] wayPoints)
     {
@@ -56,8 +59,20 @@ public class Boss : MonoBehaviour
             movement2D.MoveTo(direction);
     }
 
+    public void Stunned(int time){
+        StartCoroutine("Stun",time);
+    }
+
+    private IEnumerator Stun(int time){
+        movement2D.MoveSpeed = 0;
+        yield return new WaitForSeconds(time);
+        movement2D.ResetMoveSpeed();
+    }
+
     public void OnDie(BossDestroyType type)
     {
         enemySpawner.DestroyEnemy(type,this);
+        itemtype = Random.Range(0, 3);
+        Instantiate(item[itemtype], transform.position, Quaternion.identity);
     }
 }

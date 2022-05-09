@@ -16,6 +16,7 @@ TagManager:
   - moveTower1
   - moveTower2
   - Cancel
+  - Item
   layers:
   - Default
   - TransparentFX

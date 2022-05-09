@@ -5,10 +5,10 @@ using UnityEngine;
 public class EnemyHP : MonoBehaviour
 {
     [SerializeField]
-    private float maxHP;
-    private float currentHP;
+    public float maxHP;
+    public float currentHP;
     private bool isDie = false;
-    private Enemy enemy;
+    public Enemy enemy;
     private SpriteRenderer spriteRenderer;
 
     public float MaxHP => maxHP;

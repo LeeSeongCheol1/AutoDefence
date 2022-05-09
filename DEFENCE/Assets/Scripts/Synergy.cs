@@ -31,7 +31,7 @@ public class Synergy : MonoBehaviour
             case "Archer":
                 synergy[1]++;
                 if(synergy[1] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[3] += 3;
                 }else if(synergy[1] == 4){
                     synergyBuff[1] += 30;
                 }
@@ -49,13 +49,13 @@ public class Synergy : MonoBehaviour
                 if(synergy[3] == 2){
                     synergyBuff[0] += 50;
                 }else if(synergy[3] == 4){
-                    synergyBuff[4] += 100;
+                    synergyBuff[2] -= 0.15f;
                 }
                 break;
             case "Glacia":
                 synergy[4]++;
                 if(synergy[4] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[3] += 3;
                 }else if(synergy[4] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -63,7 +63,7 @@ public class Synergy : MonoBehaviour
             case "Magician":
                 synergy[5]++;
                 if(synergy[5] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[3] += 3;
                 }else if(synergy[5] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -71,7 +71,7 @@ public class Synergy : MonoBehaviour
             case "Pirate":
                 synergy[6]++;
                 if(synergy[6] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[3] += 3;
                 }else if(synergy[6] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -79,7 +79,7 @@ public class Synergy : MonoBehaviour
             case "Priest":
                 synergy[7]++;
                 if(synergy[7] == 2){
-                    synergyBuff[3] += 30;
+                    synergyBuff[3] += 3;
                 }else if(synergy[7] == 4){
                     synergyBuff[3] += 100;
                 }
@@ -140,7 +140,7 @@ public class Synergy : MonoBehaviour
             case "Assasin":
                 synergy[0]--;
                 if(synergy[0] == 1){
-                    synergyBuff[1] -= 30;
+                    synergyBuff[1] -= 3;
                 }else if(synergy[0] == 3){
                     synergyBuff[0] -= 100;
                 }
@@ -148,7 +148,7 @@ public class Synergy : MonoBehaviour
             case "Archer":
                 synergy[1]--;
                 if(synergy[1] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[3] -= 3;
                 }else if(synergy[1] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -166,13 +166,13 @@ public class Synergy : MonoBehaviour
                 if(synergy[3] == 1){
                     synergyBuff[0] -= 50;
                 }else if(synergy[3] == 3){
-                    synergyBuff[3] -= 100;
+                    synergyBuff[2] += 0.15f;
                 }
                 break;
             case "Glacia":
                 synergy[4]--;
                 if(synergy[4] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[3] -= 3;
                 }else if(synergy[4] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -180,7 +180,7 @@ public class Synergy : MonoBehaviour
             case "Magician":
                 synergy[5]--;
                 if(synergy[5] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[3] -= 3;
                 }else if(synergy[5] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -188,7 +188,7 @@ public class Synergy : MonoBehaviour
             case "Pirate":
                 synergy[6]--;
                 if(synergy[6] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[3] -= 3;
                 }else if(synergy[6] == 3){
                     synergyBuff[3] -= 100;
                 }
@@ -196,7 +196,7 @@ public class Synergy : MonoBehaviour
             case "Priest":
                 synergy[7]--;
                 if(synergy[7] == 1){
-                    synergyBuff[3] -= 30;
+                    synergyBuff[3] -= 3;
                 }else if(synergy[7] == 3){
                     synergyBuff[3] -= 100;
                 }

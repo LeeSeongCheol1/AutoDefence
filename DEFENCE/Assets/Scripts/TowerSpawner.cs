@@ -37,6 +37,8 @@ public class TowerSpawner : MonoBehaviour
     private TextMeshProUGUI towerText;
     [SerializeField]
     private GameObject cancelPrefab;
+    [SerializeField]
+    private Reload reload;
     public GameObject tempPrefab;
 
     private TowerDataViewer towerDataViewer;
@@ -46,6 +48,7 @@ public class TowerSpawner : MonoBehaviour
     public int towernum = 0;
     public int towertier = 0;
     public int maxnum = 0;
+    GameObject cancelBtn;
 
     private void Awake() {
         maxnum = 2;
@@ -57,10 +60,6 @@ public class TowerSpawner : MonoBehaviour
         towerType = type;
         towertier = tier;
         // 버튼 중복 방지
-        if(isOnTowerButton == true)
-        {
-            return;
-        }
 
         switch(tier){
             case 1:
@@ -86,8 +85,11 @@ public class TowerSpawner : MonoBehaviour
             break;
 
         }
-
-        tempPrefab = Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
+        
+        cancelBtn = GameObject.FindGameObjectWithTag("Cancel");
+        if(cancelBtn == null){
+            tempPrefab = Instantiate(cancelPrefab, new Vector3(-5.16f, 4.0f, 0), Quaternion.identity);
+        }
         // 타워 이미 클릭했다고 판정, 두번 클릭시 중복x를 위해 클릭했다고 판정
         isOnTowerButton = true;
     }
@@ -139,7 +141,9 @@ public class TowerSpawner : MonoBehaviour
                 clone3.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
             break;
         }
-
+        reload.btnClicked = false;
+        reload.btnStatus[reload.clickednum] = 1;
+        reload.checkPurchase();
         OnBuffAllBuffTowers();
         Destroy(tempPrefab);
     }
@@ -190,6 +194,7 @@ public class TowerSpawner : MonoBehaviour
                 GameObject clone1 = Instantiate(towerTemplate_tier1[towerType].towerPrefab, position, Quaternion.identity);
                 clone1.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
                 synergy.chkSynergy(towerTemplate_tier1[towerType].weapon[0].towerSynergy);
+                clone1.GetComponent<TowerWeapon>().towertype = towerTemplate_tier1[towerType].weapon[0].towerSynergy;
             break;
             case 2:
                 playerGold.CurrentGold -= towerTemplate_tier2[towerType].weapon[0].cost;
@@ -197,6 +202,7 @@ public class TowerSpawner : MonoBehaviour
                 GameObject clone2 = Instantiate(towerTemplate_tier2[towerType].towerPrefab, position, Quaternion.identity);
                 clone2.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
                 synergy.chkSynergy(towerTemplate_tier2[towerType].weapon[0].towerSynergy);
+                clone2.GetComponent<TowerWeapon>().towertype = towerTemplate_tier2[towerType].weapon[0].towerSynergy;
             break;
             case 3:
                 playerGold.CurrentGold -= towerTemplate_tier3[towerType].weapon[0].cost;
@@ -204,18 +210,22 @@ public class TowerSpawner : MonoBehaviour
                 GameObject clone3 = Instantiate(towerTemplate_tier3[towerType].towerPrefab, position, Quaternion.identity);
                 clone3.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
                 synergy.chkSynergy(towerTemplate_tier3[towerType].weapon[0].towerSynergy);
+                clone3.GetComponent<TowerWeapon>().towertype = towerTemplate_tier3[towerType].weapon[0].towerSynergy;
             break;
         }
 
         // 새로 배치되는 타워가 버프 타워 주변에 배치될 경우
         // 버프 효과를 받을 수 있도록 모든 버프 타워의 버프 효과 갱신
+        reload.btnClicked = false;
+        reload.btnStatus[reload.clickednum] = 1;
+        reload.checkPurchase();
         OnBuffAllBuffTowers();
         Destroy(tempPrefab);
     }
 
     public void cancelbuttonClicked(){
         isOnTowerButton = false;
-    }
+    }   
 
     public void OnBuffAllBuffTowers()
     {
