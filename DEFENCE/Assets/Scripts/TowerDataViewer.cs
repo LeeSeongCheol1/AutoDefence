@@ -63,6 +63,7 @@ public class TowerDataViewer : MonoBehaviour
     {
         gameObject.SetActive(false);
         towerAttackRange.OffAttackRange();
+        cancelButton.gameObject.SetActive(false);
     }
 
     private void UpdateTowerData()
@@ -158,5 +159,6 @@ public class TowerDataViewer : MonoBehaviour
 
     public void OnClickMoveTower(){
         currentTower.MoveTower();   
+        OffPanel();
     }
 }
