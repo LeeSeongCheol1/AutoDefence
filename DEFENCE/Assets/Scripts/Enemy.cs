@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
         wayPointCount = wayPoints.Length;
         this.wayPoints = new Transform[wayPointCount];
         this.wayPoints = wayPoints;
+        gameObject.tag = "Enemy";
 
         transform.position = wayPoints[currentIndex].position;
 

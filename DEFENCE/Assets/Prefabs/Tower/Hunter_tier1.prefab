@@ -42,6 +42,9 @@ GameObject:
   - component: {fileID: 655957330067467009}
   - component: {fileID: 523401281885074300}
   - component: {fileID: 4014686399601866030}
+  - component: {fileID: 7892669214103665139}
+  - component: {fileID: -1862539899370626470}
+  - component: {fileID: -5222497840537255610}
   m_Layer: 0
   m_Name: Hunter_tier1
   m_TagString: Tower
@@ -164,3 +167,44 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 0.59, z: 0.2}
   m_Center: {x: 0.14959997, y: 0, z: 0}
+--- !u!114 &7892669214103665139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083267829755115837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c602ff9eda433974085b34e3a08c5d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-1862539899370626470
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083267829755115837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834b13964e397fe4ab49f4dda05ac633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  currentHP: 0
+  enemy: {fileID: 0}
+--- !u!114 &-5222497840537255610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5083267829755115837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5540b5399502944d92f9bf76011191e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}

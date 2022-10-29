@@ -12,8 +12,9 @@ public class TowerTemplate : ScriptableObject
     [System.Serializable]
     public struct Weapon
     {
-        public string towerIdentity;
-        public string towerSynergy;
+        public string unitSynergy;  //유닛특성
+        public string speciesIdentity;  //종족특성
+        public string individualSynergy;    //개체특성
         public Sprite sprite;
         public float critical;
         public float minDamage;
@@ -22,6 +23,7 @@ public class TowerTemplate : ScriptableObject
         public float buff;
         public float rate;
         public float range;
+        public int HP;
         public int cost;
         public int sell;
     }

@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 7671998312557913562}
   - component: {fileID: 7215183142912228775}
   - component: {fileID: 6112805693327768565}
+  - component: {fileID: 391070858797657431}
+  - component: {fileID: -2234190792649602242}
+  - component: {fileID: -4865872394136715731}
   m_Layer: 0
   m_Name: Glacia_tier3
   m_TagString: Tower
@@ -118,6 +121,9 @@ MonoBehaviour:
   towerarr: []
   vec1: {x: 0, y: 0, z: 0}
   vec2: {x: 0, y: 0, z: 0}
+  items: 000000000000000000000000
+  itemnum: 0
+  towertype: 
 --- !u!65 &6112805693327768565
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,6 +137,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 0.59, z: 0.2}
   m_Center: {x: 0.14959997, y: 0, z: 0}
+--- !u!114 &391070858797657431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731821640062892006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c602ff9eda433974085b34e3a08c5d55, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &-2234190792649602242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731821640062892006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834b13964e397fe4ab49f4dda05ac633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  currentHP: 0
+  enemy: {fileID: 0}
+--- !u!114 &-4865872394136715731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2731821640062892006}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5540b5399502944d92f9bf76011191e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &7412036939515368327
 GameObject:
   m_ObjectHideFlags: 0

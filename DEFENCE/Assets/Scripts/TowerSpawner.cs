@@ -193,24 +193,24 @@ public class TowerSpawner : MonoBehaviour
                 // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
                 GameObject clone1 = Instantiate(towerTemplate_tier1[towerType].towerPrefab, position, Quaternion.identity);
                 clone1.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
-                synergy.chkSynergy(towerTemplate_tier1[towerType].weapon[0].towerSynergy);
-                clone1.GetComponent<TowerWeapon>().towertype = towerTemplate_tier1[towerType].weapon[0].towerSynergy;
+                synergy.chkSynergy(towerTemplate_tier1[towerType].weapon[0].speciesIdentity);
+                clone1.GetComponent<TowerWeapon>().towertype = towerTemplate_tier1[towerType].weapon[0].speciesIdentity;
             break;
             case 2:
                 playerGold.CurrentGold -= towerTemplate_tier2[towerType].weapon[0].cost;
                 // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
                 GameObject clone2 = Instantiate(towerTemplate_tier2[towerType].towerPrefab, position, Quaternion.identity);
                 clone2.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
-                synergy.chkSynergy(towerTemplate_tier2[towerType].weapon[0].towerSynergy);
-                clone2.GetComponent<TowerWeapon>().towertype = towerTemplate_tier2[towerType].weapon[0].towerSynergy;
+                synergy.chkSynergy(towerTemplate_tier2[towerType].weapon[0].speciesIdentity);
+                clone2.GetComponent<TowerWeapon>().towertype = towerTemplate_tier2[towerType].weapon[0].speciesIdentity;
             break;
             case 3:
                 playerGold.CurrentGold -= towerTemplate_tier3[towerType].weapon[0].cost;
                 // GameObject clone = Instantiate(towerPrefab, position, Quaternion.identity);
                 GameObject clone3 = Instantiate(towerTemplate_tier3[towerType].towerPrefab, position, Quaternion.identity);
                 clone3.GetComponent<TowerWeapon>().Setup(this,bossSpawner, enemySpawner,playerGold, tile);
-                synergy.chkSynergy(towerTemplate_tier3[towerType].weapon[0].towerSynergy);
-                clone3.GetComponent<TowerWeapon>().towertype = towerTemplate_tier3[towerType].weapon[0].towerSynergy;
+                synergy.chkSynergy(towerTemplate_tier3[towerType].weapon[0].speciesIdentity);
+                clone3.GetComponent<TowerWeapon>().towertype = towerTemplate_tier3[towerType].weapon[0].speciesIdentity;
             break;
         }
 

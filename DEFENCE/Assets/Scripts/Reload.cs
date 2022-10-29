@@ -154,19 +154,19 @@ public class Reload : MonoBehaviour
             switch(tier[i]){
                 case 1:
                 tierImages[i].sprite = tiers[0]; 
-                synergyTexts[i].text = towerTemplate_tier1[type[i]].weapon[0].towerSynergy;
+                synergyTexts[i].text = towerTemplate_tier1[type[i]].weapon[0].speciesIdentity;
                 texts[i].text = "$" + towerTemplate_tier1[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier1[type[i]];    
                 break;
                 case 2:
                 tierImages[i].sprite = tiers[1]; 
-                synergyTexts[i].text = towerTemplate_tier2[type[i]].weapon[0].towerSynergy;
+                synergyTexts[i].text = towerTemplate_tier2[type[i]].weapon[0].speciesIdentity;
                 texts[i].text = "$" + towerTemplate_tier2[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier2[type[i]];    
                 break;
                 case 3:
                 tierImages[i].sprite = tiers[2]; 
-                synergyTexts[i].text = towerTemplate_tier3[type[i]].weapon[0].towerSynergy;
+                synergyTexts[i].text = towerTemplate_tier3[type[i]].weapon[0].speciesIdentity;
                 texts[i].text = "$" + towerTemplate_tier3[type[i]].weapon[0].cost;
                 btns[i].sprite = sprites_tier3[type[i]];    
                 break;

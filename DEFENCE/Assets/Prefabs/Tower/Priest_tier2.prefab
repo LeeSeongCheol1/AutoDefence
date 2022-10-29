@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 8831937451316554208}
   - component: {fileID: 8415058743056888221}
   - component: {fileID: 4916872945371019215}
+  - component: {fileID: -948529813362475718}
+  - component: {fileID: 4075405354990677093}
+  - component: {fileID: 5395896729508250176}
   m_Layer: 0
   m_Name: Priest_tier2
   m_TagString: Tower
@@ -118,6 +121,9 @@ MonoBehaviour:
   towerarr: []
   vec1: {x: 0, y: 0, z: 0}
   vec2: {x: 0, y: 0, z: 0}
+  items: 000000000000000000000000
+  itemnum: 0
+  towertype: 
 --- !u!65 &4916872945371019215
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -131,6 +137,50 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 0.59, z: 0.2}
   m_Center: {x: 0.14959997, y: 0, z: 0}
+--- !u!114 &-948529813362475718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819141331665845212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834b13964e397fe4ab49f4dda05ac633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  currentHP: 0
+  enemy: {fileID: 0}
+--- !u!114 &4075405354990677093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819141331665845212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 834b13964e397fe4ab49f4dda05ac633, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHP: 0
+  currentHP: 0
+  enemy: {fileID: 0}
+--- !u!114 &5395896729508250176
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3819141331665845212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5540b5399502944d92f9bf76011191e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 0
+  moveDirection: {x: 0, y: 0, z: 0}
 --- !u!1 &8517971366190456765
 GameObject:
   m_ObjectHideFlags: 0

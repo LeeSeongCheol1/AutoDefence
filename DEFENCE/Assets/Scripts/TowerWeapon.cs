@@ -69,8 +69,8 @@ public class TowerWeapon : MonoBehaviour
     public float synergySlow;
     private Synergy syn;
     
-    private string towerIdentity => towerTemplate.weapon[level].towerIdentity; 
-    public string towersynergy => towerTemplate.weapon[level].towerSynergy; 
+    private string towerIdentity => towerTemplate.weapon[level].speciesIdentity; 
+    public string towersynergy => towerTemplate.weapon[level].speciesIdentity; 
     public GameObject[] towerarr;
     private Vector3 vec;
     public Vector3 vec1;
@@ -225,7 +225,7 @@ public class TowerWeapon : MonoBehaviour
 
             // attackRate 시간만큼 대기
             // yield return new WaitForSeconds(attackRate);
-            yield return new WaitForSeconds((towerTemplate.weapon[level].rate)*(1-synergyRate));
+            yield return new WaitForSeconds(10/(towerTemplate.weapon[level].rate));
 
             // 발사체 생성
             SpawnProjectile();
@@ -403,7 +403,7 @@ public class TowerWeapon : MonoBehaviour
             if(towerarr[y[i]].GetComponent<TowerWeapon>().disable == false){
                 towerSpawner.towernum--;
                 GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
-                synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
+                synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].speciesIdentity);
             }
             towerarr[y[i]].GetComponent<TowerWeapon>().ownerTile.IsBuildTower = false;
             Destroy(towerarr[y[i]]);
@@ -451,7 +451,7 @@ public class TowerWeapon : MonoBehaviour
             towerSpawner.towernum--;
             towerSpawner.UpdateTowerText();
             GameObject synergy = GameObject.FindGameObjectWithTag("Synergy");
-            synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].towerSynergy);
+            synergy.GetComponent<Synergy>().removeSynergy(towerTemplate.weapon[level].speciesIdentity);
         }
         // 골드 증가
         playerGold.CurrentGold += towerTemplate.weapon[level].sell;

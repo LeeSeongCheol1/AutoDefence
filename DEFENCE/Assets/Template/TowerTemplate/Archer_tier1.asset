@@ -25,7 +25,7 @@ MonoBehaviour:
     maxDamage: 31
     slow: 0
     buff: 0
-    rate: 0.62
+    rate: 10
     range: 3
     cost: 1
     sell: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
     maxDamage: 86
     slow: 0
     buff: 0
-    rate: 0.48
+    rate: 20
     range: 3
     cost: 1
     sell: 2
