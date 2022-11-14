@@ -87,6 +87,9 @@ public class TowerWeapon : MonoBehaviour
     */
 
     private void Awake(){
+        if(gameObject.tag == "Enemy"){
+            return;
+        }
         objectDetector = GameObject.Find("ObjectDetector").GetComponent<ObjectDetector>();
         systemTextViewer = GameObject.Find("TextSystem").GetComponent<SystemTextViewer>();
     }

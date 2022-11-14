@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7563768800994601594}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: -7479515619917173399}
   - component: {fileID: -962656715638759935}
   - component: {fileID: -2403606675324059803}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Glacia_tier1
   m_TagString: Tower
   m_Icon: {fileID: 0}

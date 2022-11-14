@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,7 +60,7 @@ public class EnemySpawner : MonoBehaviour
             Enemy enemy = clone.GetComponent<Enemy>();
 
             enemy.Setup(this,wayPoints);
-            enemyList.Add(enemy);
+            enemyList.Add(enemy);   
 
             SpawnEnemyHPSlider(clone);
 

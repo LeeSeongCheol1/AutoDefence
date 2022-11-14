@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1731974411354130801}
   - component: {fileID: -3285018253293084885}
   - component: {fileID: -8340095729735417153}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Archer_tier2
   m_TagString: Tower
   m_Icon: {fileID: 0}
@@ -187,7 +187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2271054091417417737}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -5992,6 +5992,54 @@ MonoBehaviour:
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
   m_ConstraintCount: 2
+--- !u!1 &842914123
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 842914124}
+  - component: {fileID: 842914125}
+  m_Layer: 5
+  m_Name: Setting
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &842914124
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842914123}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1076471599}
+  m_RootOrder: 21
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &842914125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 842914123}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd9731ca62d367b4486fb7ec3a967207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &850789532
 GameObject:
   m_ObjectHideFlags: 0
@@ -7721,6 +7769,7 @@ RectTransform:
   - {fileID: 1061196646}
   - {fileID: 1497892487}
   - {fileID: 1672530503}
+  - {fileID: 842914124}
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9995,10 +10044,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: "\uC124\uC815"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9aa278fff6b0eda44bb46914c0f43602, type: 2}
+  m_sharedMaterial: {fileID: 9158560967958708105, guid: 9aa278fff6b0eda44bb46914c0f43602,
+    type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -10022,8 +10072,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12525,7 +12575,7 @@ GameObject:
   - component: {fileID: 1672530505}
   - component: {fileID: 1672530504}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SettingBtn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12548,8 +12598,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 602, y: 468}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 683, y: 486.5}
+  m_SizeDelta: {x: 258.09482, y: 134.59729}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1672530504
 MonoBehaviour:
@@ -12593,7 +12643,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1672530505}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 842914125}
+        m_TargetAssemblyTypeName: setting, Assembly-CSharp
+        m_MethodName: gameSetting
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1672530505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16168,7 +16230,7 @@ MonoBehaviour:
   - spawnTime: 0.5
     maxEnemyCount: 20
     enemyPrefabs:
-    - {fileID: 6257791566759241274, guid: 536026b41a0cf4b429d2d6a26b74b89f, type: 3}
+    - {fileID: 136266394824879906, guid: ad764db6b244a9f41a8df88736e12f76, type: 3}
   - spawnTime: 0.5
     maxEnemyCount: 20
     enemyPrefabs:
