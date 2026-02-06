@@ -44,7 +44,7 @@ public class TowerSpawner : MonoBehaviour
     private Reload reload;
     public GameObject tempPrefab;
 
-    private TowerDataViewer towerDataViewer;
+    //private TowerDataViewer towerDataViewer;
     public bool isOnTowerButton = false;
     private GameObject followTowerClone = null;
     private int towerType;

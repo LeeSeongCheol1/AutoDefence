@@ -32,6 +32,6 @@ public class Timer : MonoBehaviour
             EXP.GetComponent<PlayerLV>().levelUp(2);
         }
         LimitTime -= Time.deltaTime;
-        text_Timer.text = "다음 웨이브까지\n" + Mathf.Round(LimitTime);
+        //text_Timer.text = "다음 웨이브까지\n" + Mathf.Round(LimitTime);
     }
 }

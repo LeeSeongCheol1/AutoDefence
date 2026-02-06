@@ -24,8 +24,7 @@ public class Projectile : MonoBehaviour
         }
         else
         {
-            // [변경] 파괴 대신 풀로 반환
-            ProjectilePool.Instance.Return(gameObject);
+            PoolingManager.Instance.Return(gameObject);
         }
     }
 
