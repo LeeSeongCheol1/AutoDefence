@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;   
-using TMPro;
+using UnityEngine.UIElements;
 
 public class TowerSpawner : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class TowerSpawner : MonoBehaviour
     [SerializeField]
     private int towerBuildGold = 50;
     */
+
+    [SerializeField] Transform tile;
 
     [SerializeField]
     private BossSpawner bossSpawner;
@@ -53,6 +56,20 @@ public class TowerSpawner : MonoBehaviour
     private void Awake() {
         maxnum = 2;
         UpdateTowerText();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            foreach (Transform child in tile)
+            {
+                GameObject clone1 = Instantiate(towerTemplate_tier1[towerType].towerPrefab, child.transform.position, Quaternion.identity);
+                clone1.GetComponent<TowerWeapon>().Setup(this, bossSpawner, enemySpawner, playerGold, child.GetComponent<Tile>());
+                synergy.chkSynergy(towerTemplate_tier1[towerType].weapon[0].speciesIdentity);
+                clone1.GetComponent<TowerWeapon>().towertype = towerTemplate_tier1[towerType].weapon[0].speciesIdentity;
+            }
+        }
     }
 
     public void ReadyToSpawnTower(int tier, int type)

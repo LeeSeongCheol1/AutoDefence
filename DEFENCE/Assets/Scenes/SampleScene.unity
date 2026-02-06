@@ -4165,6 +4165,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9281e01487fb2854481a94ec8156b1f6, type: 2}
   - {fileID: 11400000, guid: 69583d1162fc41f41a7b17aa93828c9b, type: 2}
   synergy: {fileID: 2049108718}
+  tile: {fileID: 1884571782}
   bossSpawner: {fileID: 349706607}
   enemySpawner: {fileID: 720850691}
   playerGold: {fileID: 756988554}

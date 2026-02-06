@@ -311,28 +311,26 @@ public class TowerWeapon : MonoBehaviour
 
     private void SpawnProjectile()
     {
-        GameObject clone = Instantiate(projectilePrefab, spawnPoint.position, Quaternion.identity);
-        // clone.GetComponent<Projectile>().Setup(attackTarget,towerTemplate.weapon[level].damage);
-        int damage = (int)(Random.Range(minDamage,maxDamage+1)+synergyDamage);
+        // [변경] Instantiate 대신 풀에서 가져옴
+        GameObject clone = PoolingManager.Instance.Get(projectilePrefab, spawnPoint.position, Quaternion.identity);
+
+        int damage = (int)(Random.Range(minDamage, maxDamage + 1) + synergyDamage);
         bool cri = randomOX(Critical);
 
-        if (cri)
+        if (cri) damage = (int)(maxDamage + AddedDamage) * 2;
+        else damage = damage + (int)AddedDamage;
+
+        // 컴포넌트 셋업 (기존 로직 유지)
+        switch (towertype)
         {
-            damage = (int)(maxDamage + AddedDamage) * 2;
-        }
-        else {
-            damage = damage + (int)AddedDamage;
-        }
-        
-        switch(towertype){
             case "Hunter":
-                clone.GetComponent<hunterProjectile>().Setup(attackTarget, damage,cri);
+                clone.GetComponent<hunterProjectile>().Setup(attackTarget, damage, cri);
                 break;
             case "Warrior":
-                clone.GetComponent<warriorProjectile>().Setup(attackTarget, damage,cri);
+                clone.GetComponent<warriorProjectile>().Setup(attackTarget, damage, cri);
                 break;
             default:
-                clone.GetComponent<Projectile>().Setup(attackTarget, damage,cri);
+                clone.GetComponent<Projectile>().Setup(attackTarget, damage, cri);
                 break;
         }
     }
@@ -372,11 +370,8 @@ public class TowerWeapon : MonoBehaviour
         {
             if(hit[i].transform == attackTarget)
             {
-                // 선의 시작지점
                 lineRenderer.SetPosition(0, spawnPoint.position);
-                // 선의 목표지점
                 lineRenderer.SetPosition(1, new Vector3(hit[i].point.x, hit[i].point.y, 0) + Vector3.back);
-                // 타격 효과 위치 설정
                 hitEffect.position = hit[i].point;
                 // 적 체력 감소(1초에 damage만큼 감소)
                 // attackTarget.GetComponent<EnemyHP>().TakeDamage(towerTemplate.weapon[level].damage * Time.deltaTime);
@@ -479,9 +474,10 @@ public class TowerWeapon : MonoBehaviour
         }
     }
 
-    public void MoveTower(){
-        gameObject.tag = "moveTower1";
-        objectDetector.moveStatus = true;
+    public void MoveTower()
+    {
+        objectDetector.StartMove(this);
+
         systemTextViewer.MovePrint(true);
         StartCoroutine("MoveTowerCancel");
     }
